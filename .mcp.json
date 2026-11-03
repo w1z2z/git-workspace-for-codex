@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "git-workspace": {
+      "type": "stdio",
+      "command": "./bin/start",
+      "args": [],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}

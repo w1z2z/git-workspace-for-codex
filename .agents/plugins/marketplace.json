@@ -1,0 +1,1 @@
+{"name":"git-workspace-local","interface":{"displayName":"Git Workspace (локально)"},"plugins":[{"name":"git-workspace","source":{"source":"local","path":"./"},"policy":{"installation":"AVAILABLE","authentication":"ON_INSTALL"},"category":"Productivity"}]}

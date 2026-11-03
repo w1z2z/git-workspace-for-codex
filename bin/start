@@ -1,0 +1,23 @@
+#!/bin/sh
+set -eu
+PLUGIN_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+export PATH
+NODE_BIN=$(command -v node || true)
+if [ -z "$NODE_BIN" ] && [ -n "${HOME:-}" ]; then
+  for candidate in "$HOME"/.nvm/versions/node/v*/bin/node; do
+    [ -x "$candidate" ] && NODE_BIN=$candidate
+  done
+fi
+if [ -z "$NODE_BIN" ]; then
+  echo 'Git Workspace: установите Node.js 22 или новее и добавьте node в PATH.' >&2
+  exit 1
+fi
+NODE_MAJOR=$("$NODE_BIN" -p 'Number(process.versions.node.split(".")[0])')
+if [ "$NODE_MAJOR" -lt 22 ]; then
+  echo 'Git Workspace: требуется Node.js 22 или новее.' >&2
+  exit 1
+fi
+PATH="$(dirname -- "$NODE_BIN"):$PATH"
+export PATH
+exec "$NODE_BIN" "$PLUGIN_DIR/dist/server.js"

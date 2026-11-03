@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "git-workspace",
+  "version": "1.5.3",
+  "description": "Управление локальными Git-репозиториями в Codex: просмотр изменений, staging, генерация сообщений коммитов, Commit и Push.",
+  "author": {
+    "name": "w1z2z"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Git Workspace",
+        "shortDescription": "Git под рукой в Codex",
+        "longDescription": "Работайте с Git прямо в Codex: выбирайте папку и переключайтесь между локальными репозиториями, просматривайте текущую ветку и подключённый remote.\n\nПроверяйте diff или весь файл, смотрите количество добавленных и удалённых строк. Добавляйте изменения в Staged Changes и убирайте их обратно; отменённые правки сохраняются в локальном stash.\n\nГенерируйте сообщения коммитов через Codex CLI с выбором модели, языка и формата. Выполняйте Commit и Push с указанием удалённого репозитория и ветки. Язык интерфейса и язык коммитов настраиваются отдельно.\n\nНачало работы: откройте плагин → выберите папку → выберите репозиторий. Если репозитория ещё нет, создайте его и подключите GitHub по HTTPS или SSH URL.\n\nДля macOS. Требуются Git, Node.js 22+ и Codex CLI; для генерации сообщений — вход в Codex CLI. Изменения файлов передаются в Codex при генерации сообщения; Push отправляет коммиты в выбранный remote.",
+        "developerName": "w1z2z",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive",
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": "Открой Git Workspace",
+        "logo": "./assets/icon.svg",
+        "composerIcon": "./assets/icon.svg"
+      }
+    }
+  }
+}

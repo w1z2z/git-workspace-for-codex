@@ -1,0 +1,1104 @@
+/* node_modules/@openai/mcp-extensions/styles.css */
+@layer base {
+  :root {
+    color-scheme: light dark;
+    --background: var( --color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)) );
+    --foreground: var( --color-text-primary, light-dark(rgb(26 28 31), rgb(255 255 255)) );
+    --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+    --card-foreground: var(--color-text-primary, var(--foreground));
+    --primary: var( --color-text-info, light-dark(rgb(51 156 255), rgb(131 195 255)) );
+    --primary-foreground: var( --color-text-inverse, light-dark(rgb(255 255 255), rgb(13 13 13)) );
+    --secondary: var( --color-background-secondary, light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%)) );
+    --secondary-foreground: var(--color-text-primary, var(--foreground));
+    --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+    --muted-foreground: var( --color-text-secondary, light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%)) );
+    --accent: var( --color-background-info, light-dark(rgb(229 242 255), rgb(13 39 63)) );
+    --accent-foreground: var(--color-text-info, var(--primary));
+    --destructive: var( --color-text-warning, light-dark(rgb(226 85 7), rgb(255 133 73)) );
+    --border: var( --color-border-secondary, light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%)) );
+    --input: var( --color-border-primary, light-dark(rgb(26 28 31 / 11.8%), rgb(255 255 255 / 12%)) );
+    --ring: var(--color-ring-primary, var(--primary));
+    --font-size-base: var(--font-text-md-size, 14px);
+    --radius: var(--border-radius-lg, 12.5px);
+  }
+  :root[data-theme=light] {
+    color-scheme: light;
+  }
+  :root[data-theme=dark] {
+    color-scheme: dark;
+  }
+  body {
+    margin: 0;
+    color: var(--foreground);
+    background: var(--background);
+    font-size: max(11px, var(--font-size-base));
+    font-weight: var(--font-weight-normal, 430);
+    line-height: 1.5;
+  }
+  body,
+  body > * {
+    font-family: var( --font-sans, -apple-system, system-ui, "Segoe UI", sans-serif );
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    margin-block: 0;
+  }
+  h1,
+  h2,
+  h3 {
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.25;
+  }
+  h1 {
+    font-size: calc(var(--font-size-base) * 1.7142857143);
+  }
+  h2 {
+    font-size: calc(var(--font-size-base) * 1.4285714286);
+  }
+  h3 {
+    font-size: calc(var(--font-size-base) * 1.2857142857);
+  }
+}
+@layer components {
+  .cursor-interaction {
+    cursor: var(--cursor-interaction, pointer);
+  }
+  .card {
+    min-width: 0;
+    padding: 12px;
+    overflow-wrap: break-word;
+    border-radius: calc(var(--radius) * 1.6);
+    corner-shape: superellipse(1.5);
+    color: var(--card-foreground);
+    background: var(--card);
+  }
+  .btn,
+  .form-check-input,
+  .form-control,
+  .form-select {
+    box-sizing: border-box;
+    font: inherit;
+  }
+  .btn {
+    appearance: button;
+    display: inline-flex;
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    min-height: 28px;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0 8px;
+    border: 1px solid var(--input);
+    border-radius: var(--radius);
+    corner-shape: superellipse(1.5);
+    color: var(--secondary-foreground);
+    background: var(--secondary);
+    cursor: var(--cursor-interaction, pointer);
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .btn:not(:disabled):hover {
+    background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+  }
+  .btn-primary {
+    border-color: transparent;
+    color: var(--primary-foreground);
+    background: var(--foreground);
+    background-clip: padding-box;
+  }
+  .btn-primary:not(:disabled):hover {
+    background: color-mix(in srgb, var(--foreground) 80%, transparent);
+    background-clip: padding-box;
+  }
+  .btn-ghost {
+    border-color: transparent;
+    color: var(--muted-foreground);
+    background: transparent;
+  }
+  .btn-ghost:not(:disabled):hover {
+    color: var(--foreground);
+    background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+  }
+  .btn:not(.btn-primary):is([aria-pressed=true], [aria-selected=true]) {
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+    background: var(--primary);
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .btn:disabled,
+  .form-check-input:disabled,
+  .form-control:disabled,
+  .form-select:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+  .form-label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--foreground);
+  }
+  .form-control,
+  .form-select {
+    display: block;
+    width: 100%;
+    min-height: 28px;
+    padding: 0 8px;
+    outline: none;
+    border: 1px solid var(--input);
+    border-radius: var(--radius);
+    corner-shape: superellipse(1.5);
+    color: var(--foreground);
+    background: var(--secondary);
+  }
+  .form-control::placeholder {
+    color: var(--muted-foreground);
+  }
+  .form-select {
+    appearance: none;
+    padding-right: 32px;
+    background-image:
+      linear-gradient(
+        45deg,
+        transparent 50%,
+        var(--muted-foreground) 50%),
+      linear-gradient(
+        135deg,
+        var(--muted-foreground) 50%,
+        transparent 50%);
+    background-position: calc(100% - 14px) 50%, calc(100% - 10px) 50%;
+    background-repeat: no-repeat;
+    background-size: 4px 4px;
+    cursor: var(--cursor-interaction, pointer);
+  }
+  .form-select:not(:disabled):hover {
+    background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+  }
+  textarea.form-control {
+    min-height: 72px;
+    padding: 8px 10px;
+    resize: vertical;
+  }
+  .form-control:focus-visible,
+  .form-select:focus-visible {
+    border-color: var(--ring);
+    box-shadow: inset 0 0 0 1px var(--ring);
+  }
+  .form-check {
+    display: flex;
+    min-height: 20px;
+    align-items: center;
+    gap: 8px;
+  }
+  .form-check-input {
+    appearance: none;
+    display: grid;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    place-items: center;
+    margin: 0;
+    border: 1px solid var(--input);
+    border-radius: 5px;
+    corner-shape: superellipse(1.5);
+    color: var(--primary-foreground);
+    background: var(--secondary);
+    cursor: var(--cursor-interaction, pointer);
+  }
+  .form-check-input:checked {
+    border-color: var(--primary);
+    background: var(--primary);
+  }
+  .form-check-input:checked::after {
+    width: 7px;
+    height: 4px;
+    border-bottom: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+    content: "";
+    transform: translateY(-1px) rotate(-45deg);
+  }
+  .form-check-input:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .form-check-label {
+    color: var(--foreground);
+  }
+  svg.lucide {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex: none;
+    stroke-width: 1.6;
+  }
+  .text-small {
+    font-size: max(11px, calc(var(--font-size-base) - 2px));
+  }
+  .text-muted {
+    color: var(--muted-foreground);
+  }
+  .text-destructive {
+    color: var(--destructive);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* src/style.css */
+:root {
+  font:
+    13px/1.45 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color-scheme: light;
+  --bg: #fafafa;
+  --fg: #242424;
+  --surface: #fff;
+  --muted: #737373;
+  --border: #e3e3e3;
+  --hover: #ededed;
+  --green: #197847;
+  --red: #ba3443;
+}
+:root[data-theme=dark] {
+  color-scheme: dark;
+  --bg: #1b1b1b;
+  --fg: #e8e8e8;
+  --surface: #242424;
+  --muted: #999;
+  --border: #363636;
+  --hover: #303030;
+  --green: #81bf93;
+  --red: #e8999d;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--color-background-primary, var(--bg));
+  color: var(--color-text-primary, var(--fg));
+}
+#app {
+  height: 100dvh;
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  padding-top: max(16px, env(safe-area-inset-top));
+}
+#app [hidden] {
+  display: none !important;
+}
+header,
+.row,
+.files-toolbar,
+.diff-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+header strong {
+  margin-right: auto;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.2px;
+}
+#app button,
+#app input,
+#app select,
+#app textarea,
+#app summary {
+  font: inherit;
+  color: inherit;
+}
+#app button,
+#app input,
+#app select,
+#app textarea {
+  border: 1px solid var(--color-border-primary, var(--border));
+  border-radius: 7px;
+  background: var(--color-background-primary, var(--bg));
+  padding: 7px 10px;
+}
+#app button {
+  min-height: 32px;
+  line-height: 18px;
+  cursor: pointer;
+  transition: background .12s, border-color .12s;
+}
+#app header button {
+  height: 32px;
+  min-height: 32px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+#app button:hover:not(:disabled),
+#app summary:hover {
+  background: var(--color-background-secondary, var(--hover));
+}
+#app button:disabled {
+  opacity: .4;
+  cursor: default;
+}
+#app button:focus-visible,
+#app summary:focus-visible,
+#app textarea:focus-visible,
+#app select:focus-visible {
+  outline: 2px solid var(--color-border-info, #7c9dbc);
+  outline-offset: 2px;
+}
+#app button.primary {
+  background: var(--color-text-primary, var(--fg));
+  color: var(--color-background-primary, var(--bg));
+  border-color: transparent;
+  font-weight: 500;
+}
+#app button.primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-text-primary, var(--fg)) 85%, var(--color-background-primary, var(--bg)));
+}
+#app select {
+  appearance: none;
+  color-scheme: inherit;
+  width: 100%;
+  padding-right: 34px;
+  cursor: pointer;
+  background-color: var(--color-background-secondary, var(--surface));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23999' stroke-width='1.5'%3E%3Cpath d='m2 4 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+#app select:hover {
+  border-color: var(--muted);
+}
+#app select option {
+  background: var(--surface);
+  color: var(--fg);
+}
+main {
+  display: grid;
+  grid-template-columns: minmax(270px, 320px) minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+  border: 1px solid var(--color-border-primary, var(--border));
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  border-right: 1px solid var(--color-border-primary, var(--border));
+  padding-top: 12px;
+}
+#repoPicker {
+  position: relative;
+  margin: 0 12px;
+}
+#app #repoPicker > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+#repoLabel {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.chevron {
+  color: var(--muted);
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.chevron svg {
+  display: block;
+}
+#repos,
+.menu {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: calc(100% + 5px);
+  padding: 5px;
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  box-shadow: 0 8px 25px #0003;
+}
+#app .repo-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  background: transparent;
+  padding: 8px;
+}
+.repo-option strong {
+  font-weight: 500;
+  flex: 1;
+}
+.repo-option > span:not(.badge) {
+  color: var(--muted);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#app .repo-option[aria-pressed=true] {
+  background: var(--hover);
+}
+.badge {
+  padding: 0 6px;
+  border-radius: 8px;
+  background: var(--hover);
+  color: var(--muted);
+  font-size: 11px;
+}
+#branch {
+  margin: 8px 16px 2px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.remote-connection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 12px 4px;
+  min-height: 26px;
+}
+#remoteStatus {
+  color: var(--muted);
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#app #connectRemote {
+  min-height: 24px;
+  padding: 3px 7px;
+  font-size: 10px;
+  flex: 0 0 auto;
+}
+#rootPath {
+  display: block;
+  margin: 0 16px 12px;
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.section-label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+#app textarea {
+  resize: vertical;
+  min-height: 68px;
+  max-height: 160px;
+  width: 100%;
+  background: var(--color-background-secondary, var(--surface));
+  line-height: 1.5;
+}
+#app textarea::placeholder {
+  color: var(--muted);
+}
+#app #generate,
+#app #cancel {
+  font-size: 11px;
+  min-height: 28px;
+  padding: 4px 8px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+}
+#app #generate:hover,
+#app #cancel:hover {
+  background: var(--hover);
+  color: var(--fg);
+}
+.commit-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+#app #commit {
+  flex: 1;
+  border-radius: 7px 0 0 7px;
+}
+#commitMenu {
+  position: relative;
+}
+#app #commitMenu > summary {
+  height: 34px;
+  min-width: 34px;
+  display: grid;
+  place-items: center;
+  background: var(--fg);
+  color: var(--bg);
+  border-left: 1px solid var(--muted);
+  border-radius: 0 7px 7px 0;
+  cursor: pointer;
+  list-style: none;
+}
+#app #commitMenu > summary:hover {
+  filter: brightness(.85);
+}
+#commitMenu .menu {
+  left: auto;
+  width: 185px;
+}
+#app .menu button {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+}
+#commitHint,
+#stale {
+  color: var(--muted);
+  font-size: 11px;
+}
+#stale:empty {
+  display: none;
+}
+#stale:not(:empty) {
+  color: #ca9b59;
+}
+.files-toolbar {
+  justify-content: space-between;
+  padding: 10px 12px 4px;
+}
+#app #stageAll {
+  min-height: 26px;
+  font-size: 11px;
+  padding: 3px 7px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+}
+#app #stageAll:hover {
+  color: var(--fg);
+  background: var(--hover);
+}
+.help {
+  margin: 0 14px 6px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.help summary {
+  cursor: pointer;
+  width: fit-content;
+  border-radius: 4px;
+}
+.help p {
+  margin: 6px 0;
+  line-height: 1.6;
+}
+aside {
+  flex: 1;
+  overflow: auto;
+  min-height: 80px;
+  padding-bottom: 12px;
+}
+h4 {
+  margin: 0;
+  padding: 10px 14px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.file {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-left: 2px solid transparent;
+}
+.file.active {
+  background: var(--color-background-secondary, var(--hover));
+  border-left-color: #89a5bd;
+}
+#app .file .name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  min-height: 34px;
+  overflow: hidden;
+  text-align: left;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  padding: 3px 2px;
+}
+.name span,
+.name small {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.name small {
+  font-size: 10px;
+  color: var(--muted);
+}
+.name small:empty {
+  display: none;
+}
+#app .file .action {
+  flex-shrink: 0;
+  min-height: 25px;
+  padding: 3px 5px;
+  font-size: 10px;
+  line-height: 16px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+}
+#app .file .action:hover:not(:disabled) {
+  background: var(--color-background-tertiary, var(--border));
+  color: var(--fg);
+}
+.file-stats {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+  font:
+    10px ui-monospace,
+    SFMono-Regular,
+    monospace;
+  color: var(--muted);
+}
+.plus {
+  color: var(--green);
+}
+.minus {
+  color: var(--red);
+}
+.empty {
+  color: var(--muted);
+  text-align: center;
+  margin: 30px 12px;
+  font-size: 12px;
+}
+.viewer {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+.diff-toolbar {
+  min-height: 47px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+#filename {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  color: var(--muted);
+}
+.diff-modes {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px;
+  flex-shrink: 0;
+}
+#app .diff-modes button {
+  min-height: 24px;
+  padding: 2px 7px;
+  font-size: 11px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+}
+#app .diff-modes button[aria-pressed=true] {
+  background: var(--hover);
+  color: var(--fg);
+}
+pre {
+  margin: 0;
+  overflow: auto;
+  padding: 14px 0;
+  flex: 1;
+  min-height: 0;
+  font:
+    12px/1.7 ui-monospace,
+    SFMono-Regular,
+    monospace;
+  tab-size: 2;
+}
+pre:empty::after {
+  content: "\412\44b\431\435\440\438\442\435  \444\430\439\43b  \441\43b\435\432\430, \447\442\43e\431\44b  \43f\43e\441\43c\43e\442\440\435\442\44c  \438\437\43c\435\43d\435\43d\438\44f";
+  display: block;
+  padding: 30px 20px;
+  color: var(--muted);
+  font: 12px/1.5 -apple-system, sans-serif;
+  text-align: center;
+}
+.line {
+  display: block;
+  min-height: 1.7em;
+  padding: 0 16px;
+  width: max-content;
+  min-width: 100%;
+}
+.add {
+  color: var(--green);
+  background: color-mix(in srgb, var(--green) 9%, transparent);
+}
+.del {
+  color: var(--red);
+  background: color-mix(in srgb, var(--red) 9%, transparent);
+}
+.hunk {
+  color: #8b9ec4;
+}
+#notice {
+  color: var(--muted);
+  font-size: 11px;
+  white-space: pre-wrap;
+  max-height: 80px;
+  overflow: auto;
+  padding: 0 2px;
+}
+#notice.error {
+  color: var(--red);
+}
+dialog {
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: min(460px, 95vw);
+}
+dialog::backdrop {
+  background: #0006;
+}
+dialog h3 {
+  font-size: 15px;
+  margin: 0 0 12px;
+}
+dialog label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 12px 0;
+}
+dialog p {
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (max-width: 650px) {
+  #app {
+    padding: 10px;
+  }
+  main {
+    grid-template-columns: minmax(230px, 42%) minmax(0, 1fr);
+  }
+  header strong {
+    font-size: 13px;
+  }
+  #app header button {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  .diff-toolbar {
+    padding: 8px;
+    gap: 6px;
+  }
+}
+@media (max-width: 460px) {
+  #app {
+    height: auto;
+    min-height: 100dvh;
+  }
+  header {
+    flex-wrap: wrap;
+  }
+  header strong {
+    flex-basis: 100%;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  aside {
+    max-height: 240px;
+  }
+  .viewer {
+    height: 460px;
+  }
+}
+.operation-loader {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid var(--border);
+  border-top-color: var(--color-text-primary, var(--fg));
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.message-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.message-heading label {
+  flex: 1;
+}
+#app #generate {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 28px;
+  padding: 4px;
+  color: var(--fg);
+}
+#app #commit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#app .file .action {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 27px;
+  height: 28px;
+  padding: 4px;
+  color: var(--muted);
+}
+.file:hover {
+  background: var(--hover);
+}
+.file .name small {
+  max-width: 80px;
+}
+h4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#app h4 .action {
+  border: 0;
+  background: transparent;
+  padding: 3px;
+  min-height: 24px;
+}
+.diff-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+.diff-body pre {
+  min-width: 0;
+}
+#diffRuler {
+  width: 16px;
+  flex-shrink: 0;
+  position: relative;
+  border-left: 1px solid var(--border);
+}
+#app .ruler-mark {
+  position: absolute;
+  left: 3px;
+  width: 8px;
+  height: 3px;
+  min-height: 3px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: currentColor;
+  z-index: 2;
+}
+.ruler-viewport {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border: 1px solid var(--muted);
+  pointer-events: none;
+}
+.dialog-close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  border: 0 !important;
+  background: transparent !important;
+  font-size: 20px !important;
+}
+dialog h3 {
+  padding-right: 24px;
+}
+#settingsDialog {
+  width: min(420px, 95vw);
+  overflow: visible;
+}
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0;
+  font-size: 12px;
+}
+.settings-select {
+  position: relative;
+}
+#app .settings-select > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--surface);
+  cursor: pointer;
+  list-style: none;
+}
+#app .settings-select > summary:hover,
+#app .settings-select[open] > summary {
+  background: var(--hover);
+  border-color: var(--muted);
+}
+.settings-select .selected-value {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.select-chevron {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1;
+}
+.settings-options {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  max-height: 220px;
+  overflow: auto;
+  padding: 5px;
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  box-shadow: 0 8px 25px #0003;
+}
+#app .settings-options button {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 7px 8px;
+  font-size: 12px;
+}
+#app .settings-options button:hover,
+#app .settings-options button[aria-pressed=true] {
+  background: var(--hover);
+}
+#app .custom-model {
+  width: 100%;
+  margin-top: 2px;
+  background: var(--surface);
+}
+#settingsDialog .format-help {
+  margin: 2px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 11px;
+}
+.format-help strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+.format-help code {
+  font-size: 11px;
+}
+#app #saveSettings {
+  margin-top: 12px;
+}
+:root[lang=en] pre:empty::after {
+  content: "Select a file on the left to review changes";
+}
+.select-chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
