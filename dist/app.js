@@ -14,7 +14,7 @@ var __export = (target, all) => {
     __defProp(target, name, { get: all[name], enumerable: true });
 };
 
-// node_modules/zod/v4/core/core.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/core.js
 // @__NO_SIDE_EFFECTS__
 function $constructor(name, initializer5, params) {
   function init(inst, def) {
@@ -65,7 +65,7 @@ function config(newConfig) {
 }
 var NEVER, $brand, $ZodAsyncError, globalConfig;
 var init_core = __esm({
-  "node_modules/zod/v4/core/core.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/core.js"() {
     NEVER = Object.freeze({
       status: "aborted"
     });
@@ -79,7 +79,7 @@ var init_core = __esm({
   }
 });
 
-// node_modules/zod/v4/core/util.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/util.js
 var util_exports = {};
 __export(util_exports, {
   BIGINT_FORMAT_RANGES: () => BIGINT_FORMAT_RANGES,
@@ -526,7 +526,7 @@ function cleanEnum(obj) {
 }
 var captureStackTrace, allowsEval, getParsedType, propertyKeyTypes, primitiveTypes, NUMBER_FORMAT_RANGES, BIGINT_FORMAT_RANGES, Class;
 var init_util = __esm({
-  "node_modules/zod/v4/core/util.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/util.js"() {
     captureStackTrace = Error.captureStackTrace ? Error.captureStackTrace : (..._args) => {
     };
     allowsEval = cached(() => {
@@ -605,7 +605,7 @@ var init_util = __esm({
   }
 });
 
-// node_modules/zod/v4/core/errors.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/errors.js
 function flattenError(error90, mapper = (issue3) => issue3.message) {
   const fieldErrors = {};
   const formErrors = [];
@@ -729,7 +729,7 @@ function prettifyError(error90) {
 }
 var initializer, $ZodError, $ZodRealError;
 var init_errors = __esm({
-  "node_modules/zod/v4/core/errors.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/errors.js"() {
     init_core();
     init_util();
     initializer = (inst, def) => {
@@ -759,10 +759,10 @@ var init_errors = __esm({
   }
 });
 
-// node_modules/zod/v4/core/parse.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/parse.js
 var _parse, parse, _parseAsync, parseAsync, _safeParse, safeParse, _safeParseAsync, safeParseAsync;
 var init_parse = __esm({
-  "node_modules/zod/v4/core/parse.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/parse.js"() {
     init_core();
     init_errors();
     init_util();
@@ -819,7 +819,7 @@ var init_parse = __esm({
   }
 });
 
-// node_modules/zod/v4/core/regexes.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/regexes.js
 var regexes_exports = {};
 __export(regexes_exports, {
   _emoji: () => _emoji,
@@ -887,7 +887,7 @@ function datetime(args) {
 }
 var cuid, cuid2, ulid, xid, ksuid, nanoid, duration, extendedDuration, guid, uuid, uuid4, uuid6, uuid7, email, html5Email, rfc5322Email, unicodeEmail, browserEmail, _emoji, ipv4, ipv6, cidrv4, cidrv6, base64, base64url, hostname, domain, e164, dateSource, date, string, bigint, integer, number, boolean, _null, _undefined, lowercase, uppercase;
 var init_regexes = __esm({
-  "node_modules/zod/v4/core/regexes.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/regexes.js"() {
     cuid = /^[cC][^\s-]{8,}$/;
     cuid2 = /^[0-9a-z]+$/;
     ulid = /^[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{26}$/;
@@ -937,7 +937,7 @@ var init_regexes = __esm({
   }
 });
 
-// node_modules/zod/v4/core/checks.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/checks.js
 function handleCheckPropertyResult(result, payload, property) {
   if (result.issues.length) {
     payload.issues.push(...prefixIssues(property, result.issues));
@@ -945,7 +945,7 @@ function handleCheckPropertyResult(result, payload, property) {
 }
 var $ZodCheck, numericOriginMap, $ZodCheckLessThan, $ZodCheckGreaterThan, $ZodCheckMultipleOf, $ZodCheckNumberFormat, $ZodCheckBigIntFormat, $ZodCheckMaxSize, $ZodCheckMinSize, $ZodCheckSizeEquals, $ZodCheckMaxLength, $ZodCheckMinLength, $ZodCheckLengthEquals, $ZodCheckStringFormat, $ZodCheckRegex, $ZodCheckLowerCase, $ZodCheckUpperCase, $ZodCheckIncludes, $ZodCheckStartsWith, $ZodCheckEndsWith, $ZodCheckProperty, $ZodCheckMimeType, $ZodCheckOverwrite;
 var init_checks = __esm({
-  "node_modules/zod/v4/core/checks.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/checks.js"() {
     init_core();
     init_regexes();
     init_util();
@@ -1483,10 +1483,10 @@ var init_checks = __esm({
   }
 });
 
-// node_modules/zod/v4/core/doc.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/doc.js
 var Doc;
 var init_doc = __esm({
-  "node_modules/zod/v4/core/doc.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/doc.js"() {
     Doc = class {
       constructor(args = []) {
         this.content = [];
@@ -1524,10 +1524,10 @@ var init_doc = __esm({
   }
 });
 
-// node_modules/zod/v4/core/versions.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/versions.js
 var version;
 var init_versions = __esm({
-  "node_modules/zod/v4/core/versions.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/versions.js"() {
     version = {
       major: 4,
       minor: 0,
@@ -1536,7 +1536,7 @@ var init_versions = __esm({
   }
 });
 
-// node_modules/zod/v4/core/schemas.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/schemas.js
 function isValidBase64(data) {
   if (data === "")
     return true;
@@ -1769,7 +1769,7 @@ function handleRefineResult(result, payload, input, inst) {
 }
 var $ZodType, $ZodString, $ZodStringFormat, $ZodGUID, $ZodUUID, $ZodEmail, $ZodURL, $ZodEmoji, $ZodNanoID, $ZodCUID, $ZodCUID2, $ZodULID, $ZodXID, $ZodKSUID, $ZodISODateTime, $ZodISODate, $ZodISOTime, $ZodISODuration, $ZodIPv4, $ZodIPv6, $ZodCIDRv4, $ZodCIDRv6, $ZodBase64, $ZodBase64URL, $ZodE164, $ZodJWT, $ZodCustomStringFormat, $ZodNumber, $ZodNumberFormat, $ZodBoolean, $ZodBigInt, $ZodBigIntFormat, $ZodSymbol, $ZodUndefined, $ZodNull, $ZodAny, $ZodUnknown, $ZodNever, $ZodVoid, $ZodDate, $ZodArray, $ZodObject, $ZodUnion, $ZodDiscriminatedUnion, $ZodIntersection, $ZodTuple, $ZodRecord, $ZodMap, $ZodSet, $ZodEnum, $ZodLiteral, $ZodFile, $ZodTransform, $ZodOptional, $ZodNullable, $ZodDefault, $ZodPrefault, $ZodNonOptional, $ZodSuccess, $ZodCatch, $ZodNaN, $ZodPipe, $ZodReadonly, $ZodTemplateLiteral, $ZodPromise, $ZodLazy, $ZodCustom;
 var init_schemas = __esm({
-  "node_modules/zod/v4/core/schemas.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/schemas.js"() {
     init_checks();
     init_core();
     init_doc();
@@ -3176,7 +3176,7 @@ var init_schemas = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ar.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ar.js
 function ar_default() {
   return {
     localeError: error()
@@ -3184,7 +3184,7 @@ function ar_default() {
 }
 var error;
 var init_ar = __esm({
-  "node_modules/zod/v4/locales/ar.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ar.js"() {
     init_util();
     error = () => {
       const Sizable = {
@@ -3299,7 +3299,7 @@ var init_ar = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/az.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/az.js
 function az_default() {
   return {
     localeError: error2()
@@ -3307,7 +3307,7 @@ function az_default() {
 }
 var error2;
 var init_az = __esm({
-  "node_modules/zod/v4/locales/az.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/az.js"() {
     init_util();
     error2 = () => {
       const Sizable = {
@@ -3421,7 +3421,7 @@ var init_az = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/be.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/be.js
 function getBelarusianPlural(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -3444,7 +3444,7 @@ function be_default() {
 }
 var error3;
 var init_be = __esm({
-  "node_modules/zod/v4/locales/be.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/be.js"() {
     init_util();
     error3 = () => {
       const Sizable = {
@@ -3592,7 +3592,7 @@ var init_be = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ca.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ca.js
 function ca_default() {
   return {
     localeError: error4()
@@ -3600,7 +3600,7 @@ function ca_default() {
 }
 var error4;
 var init_ca = __esm({
-  "node_modules/zod/v4/locales/ca.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ca.js"() {
     init_util();
     error4 = () => {
       const Sizable = {
@@ -3718,7 +3718,7 @@ var init_ca = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/cs.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/cs.js
 function cs_default() {
   return {
     localeError: error5()
@@ -3726,7 +3726,7 @@ function cs_default() {
 }
 var error5;
 var init_cs = __esm({
-  "node_modules/zod/v4/locales/cs.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/cs.js"() {
     init_util();
     error5 = () => {
       const Sizable = {
@@ -3860,7 +3860,7 @@ var init_cs = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/de.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/de.js
 function de_default() {
   return {
     localeError: error6()
@@ -3868,7 +3868,7 @@ function de_default() {
 }
 var error6;
 var init_de = __esm({
-  "node_modules/zod/v4/locales/de.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/de.js"() {
     init_util();
     error6 = () => {
       const Sizable = {
@@ -3983,7 +3983,7 @@ var init_de = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/en.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/en.js
 function en_default() {
   return {
     localeError: error7()
@@ -3991,7 +3991,7 @@ function en_default() {
 }
 var parsedType, error7;
 var init_en = __esm({
-  "node_modules/zod/v4/locales/en.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/en.js"() {
     init_util();
     parsedType = (data) => {
       const t2 = typeof data;
@@ -4107,7 +4107,7 @@ var init_en = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/eo.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/eo.js
 function eo_default() {
   return {
     localeError: error8()
@@ -4115,7 +4115,7 @@ function eo_default() {
 }
 var parsedType2, error8;
 var init_eo = __esm({
-  "node_modules/zod/v4/locales/eo.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/eo.js"() {
     init_util();
     parsedType2 = (data) => {
       const t2 = typeof data;
@@ -4230,7 +4230,7 @@ var init_eo = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/es.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/es.js
 function es_default() {
   return {
     localeError: error9()
@@ -4238,7 +4238,7 @@ function es_default() {
 }
 var error9;
 var init_es = __esm({
-  "node_modules/zod/v4/locales/es.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/es.js"() {
     init_util();
     error9 = () => {
       const Sizable = {
@@ -4354,7 +4354,7 @@ var init_es = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/fa.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/fa.js
 function fa_default() {
   return {
     localeError: error10()
@@ -4362,7 +4362,7 @@ function fa_default() {
 }
 var error10;
 var init_fa = __esm({
-  "node_modules/zod/v4/locales/fa.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/fa.js"() {
     init_util();
     error10 = () => {
       const Sizable = {
@@ -4483,7 +4483,7 @@ var init_fa = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/fi.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/fi.js
 function fi_default() {
   return {
     localeError: error11()
@@ -4491,7 +4491,7 @@ function fi_default() {
 }
 var error11;
 var init_fi = __esm({
-  "node_modules/zod/v4/locales/fi.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/fi.js"() {
     init_util();
     error11 = () => {
       const Sizable = {
@@ -4612,7 +4612,7 @@ var init_fi = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/fr.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/fr.js
 function fr_default() {
   return {
     localeError: error12()
@@ -4620,7 +4620,7 @@ function fr_default() {
 }
 var error12;
 var init_fr = __esm({
-  "node_modules/zod/v4/locales/fr.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/fr.js"() {
     init_util();
     error12 = () => {
       const Sizable = {
@@ -4735,7 +4735,7 @@ var init_fr = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/fr-CA.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/fr-CA.js
 function fr_CA_default() {
   return {
     localeError: error13()
@@ -4743,7 +4743,7 @@ function fr_CA_default() {
 }
 var error13;
 var init_fr_CA = __esm({
-  "node_modules/zod/v4/locales/fr-CA.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/fr-CA.js"() {
     init_util();
     error13 = () => {
       const Sizable = {
@@ -4859,7 +4859,7 @@ var init_fr_CA = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/he.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/he.js
 function he_default() {
   return {
     localeError: error14()
@@ -4867,7 +4867,7 @@ function he_default() {
 }
 var error14;
 var init_he = __esm({
-  "node_modules/zod/v4/locales/he.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/he.js"() {
     init_util();
     error14 = () => {
       const Sizable = {
@@ -4983,7 +4983,7 @@ var init_he = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/hu.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/hu.js
 function hu_default() {
   return {
     localeError: error15()
@@ -4991,7 +4991,7 @@ function hu_default() {
 }
 var error15;
 var init_hu = __esm({
-  "node_modules/zod/v4/locales/hu.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/hu.js"() {
     init_util();
     error15 = () => {
       const Sizable = {
@@ -5107,7 +5107,7 @@ var init_hu = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/id.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/id.js
 function id_default() {
   return {
     localeError: error16()
@@ -5115,7 +5115,7 @@ function id_default() {
 }
 var error16;
 var init_id = __esm({
-  "node_modules/zod/v4/locales/id.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/id.js"() {
     init_util();
     error16 = () => {
       const Sizable = {
@@ -5230,7 +5230,7 @@ var init_id = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/it.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/it.js
 function it_default() {
   return {
     localeError: error17()
@@ -5238,7 +5238,7 @@ function it_default() {
 }
 var error17;
 var init_it = __esm({
-  "node_modules/zod/v4/locales/it.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/it.js"() {
     init_util();
     error17 = () => {
       const Sizable = {
@@ -5354,7 +5354,7 @@ var init_it = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ja.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ja.js
 function ja_default() {
   return {
     localeError: error18()
@@ -5362,7 +5362,7 @@ function ja_default() {
 }
 var error18;
 var init_ja = __esm({
-  "node_modules/zod/v4/locales/ja.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ja.js"() {
     init_util();
     error18 = () => {
       const Sizable = {
@@ -5476,7 +5476,7 @@ var init_ja = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/kh.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/kh.js
 function kh_default() {
   return {
     localeError: error19()
@@ -5484,7 +5484,7 @@ function kh_default() {
 }
 var error19;
 var init_kh = __esm({
-  "node_modules/zod/v4/locales/kh.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/kh.js"() {
     init_util();
     error19 = () => {
       const Sizable = {
@@ -5600,7 +5600,7 @@ var init_kh = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ko.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ko.js
 function ko_default() {
   return {
     localeError: error20()
@@ -5608,7 +5608,7 @@ function ko_default() {
 }
 var error20;
 var init_ko = __esm({
-  "node_modules/zod/v4/locales/ko.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ko.js"() {
     init_util();
     error20 = () => {
       const Sizable = {
@@ -5728,7 +5728,7 @@ var init_ko = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/mk.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/mk.js
 function mk_default() {
   return {
     localeError: error21()
@@ -5736,7 +5736,7 @@ function mk_default() {
 }
 var error21;
 var init_mk = __esm({
-  "node_modules/zod/v4/locales/mk.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/mk.js"() {
     init_util();
     error21 = () => {
       const Sizable = {
@@ -5853,7 +5853,7 @@ var init_mk = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ms.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ms.js
 function ms_default() {
   return {
     localeError: error22()
@@ -5861,7 +5861,7 @@ function ms_default() {
 }
 var error22;
 var init_ms = __esm({
-  "node_modules/zod/v4/locales/ms.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ms.js"() {
     init_util();
     error22 = () => {
       const Sizable = {
@@ -5976,7 +5976,7 @@ var init_ms = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/nl.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/nl.js
 function nl_default() {
   return {
     localeError: error23()
@@ -5984,7 +5984,7 @@ function nl_default() {
 }
 var error23;
 var init_nl = __esm({
-  "node_modules/zod/v4/locales/nl.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/nl.js"() {
     init_util();
     error23 = () => {
       const Sizable = {
@@ -6100,7 +6100,7 @@ var init_nl = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/no.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/no.js
 function no_default() {
   return {
     localeError: error24()
@@ -6108,7 +6108,7 @@ function no_default() {
 }
 var error24;
 var init_no = __esm({
-  "node_modules/zod/v4/locales/no.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/no.js"() {
     init_util();
     error24 = () => {
       const Sizable = {
@@ -6223,7 +6223,7 @@ var init_no = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ota.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ota.js
 function ota_default() {
   return {
     localeError: error25()
@@ -6231,7 +6231,7 @@ function ota_default() {
 }
 var error25;
 var init_ota = __esm({
-  "node_modules/zod/v4/locales/ota.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ota.js"() {
     init_util();
     error25 = () => {
       const Sizable = {
@@ -6347,7 +6347,7 @@ var init_ota = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ps.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ps.js
 function ps_default() {
   return {
     localeError: error26()
@@ -6355,7 +6355,7 @@ function ps_default() {
 }
 var error26;
 var init_ps = __esm({
-  "node_modules/zod/v4/locales/ps.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ps.js"() {
     init_util();
     error26 = () => {
       const Sizable = {
@@ -6476,7 +6476,7 @@ var init_ps = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/pl.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/pl.js
 function pl_default() {
   return {
     localeError: error27()
@@ -6484,7 +6484,7 @@ function pl_default() {
 }
 var error27;
 var init_pl = __esm({
-  "node_modules/zod/v4/locales/pl.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/pl.js"() {
     init_util();
     error27 = () => {
       const Sizable = {
@@ -6600,7 +6600,7 @@ var init_pl = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/pt.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/pt.js
 function pt_default() {
   return {
     localeError: error28()
@@ -6608,7 +6608,7 @@ function pt_default() {
 }
 var error28;
 var init_pt = __esm({
-  "node_modules/zod/v4/locales/pt.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/pt.js"() {
     init_util();
     error28 = () => {
       const Sizable = {
@@ -6723,7 +6723,7 @@ var init_pt = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ru.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ru.js
 function getRussianPlural(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -6746,7 +6746,7 @@ function ru_default() {
 }
 var error29;
 var init_ru = __esm({
-  "node_modules/zod/v4/locales/ru.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ru.js"() {
     init_util();
     error29 = () => {
       const Sizable = {
@@ -6894,7 +6894,7 @@ var init_ru = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/sl.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/sl.js
 function sl_default() {
   return {
     localeError: error30()
@@ -6902,7 +6902,7 @@ function sl_default() {
 }
 var error30;
 var init_sl = __esm({
-  "node_modules/zod/v4/locales/sl.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/sl.js"() {
     init_util();
     error30 = () => {
       const Sizable = {
@@ -7018,7 +7018,7 @@ var init_sl = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/sv.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/sv.js
 function sv_default() {
   return {
     localeError: error31()
@@ -7026,7 +7026,7 @@ function sv_default() {
 }
 var error31;
 var init_sv = __esm({
-  "node_modules/zod/v4/locales/sv.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/sv.js"() {
     init_util();
     error31 = () => {
       const Sizable = {
@@ -7143,7 +7143,7 @@ var init_sv = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ta.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ta.js
 function ta_default() {
   return {
     localeError: error32()
@@ -7151,7 +7151,7 @@ function ta_default() {
 }
 var error32;
 var init_ta = __esm({
-  "node_modules/zod/v4/locales/ta.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ta.js"() {
     init_util();
     error32 = () => {
       const Sizable = {
@@ -7267,7 +7267,7 @@ var init_ta = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/th.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/th.js
 function th_default() {
   return {
     localeError: error33()
@@ -7275,7 +7275,7 @@ function th_default() {
 }
 var error33;
 var init_th = __esm({
-  "node_modules/zod/v4/locales/th.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/th.js"() {
     init_util();
     error33 = () => {
       const Sizable = {
@@ -7391,7 +7391,7 @@ var init_th = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/tr.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/tr.js
 function tr_default() {
   return {
     localeError: error34()
@@ -7399,7 +7399,7 @@ function tr_default() {
 }
 var parsedType3, error34;
 var init_tr = __esm({
-  "node_modules/zod/v4/locales/tr.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/tr.js"() {
     init_util();
     parsedType3 = (data) => {
       const t2 = typeof data;
@@ -7513,7 +7513,7 @@ var init_tr = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ua.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ua.js
 function ua_default() {
   return {
     localeError: error35()
@@ -7521,7 +7521,7 @@ function ua_default() {
 }
 var error35;
 var init_ua = __esm({
-  "node_modules/zod/v4/locales/ua.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ua.js"() {
     init_util();
     error35 = () => {
       const Sizable = {
@@ -7637,7 +7637,7 @@ var init_ua = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/ur.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ur.js
 function ur_default() {
   return {
     localeError: error36()
@@ -7645,7 +7645,7 @@ function ur_default() {
 }
 var error36;
 var init_ur = __esm({
-  "node_modules/zod/v4/locales/ur.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/ur.js"() {
     init_util();
     error36 = () => {
       const Sizable = {
@@ -7761,7 +7761,7 @@ var init_ur = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/vi.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/vi.js
 function vi_default() {
   return {
     localeError: error37()
@@ -7769,7 +7769,7 @@ function vi_default() {
 }
 var error37;
 var init_vi = __esm({
-  "node_modules/zod/v4/locales/vi.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/vi.js"() {
     init_util();
     error37 = () => {
       const Sizable = {
@@ -7884,7 +7884,7 @@ var init_vi = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/zh-CN.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/zh-CN.js
 function zh_CN_default() {
   return {
     localeError: error38()
@@ -7892,7 +7892,7 @@ function zh_CN_default() {
 }
 var error38;
 var init_zh_CN = __esm({
-  "node_modules/zod/v4/locales/zh-CN.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/zh-CN.js"() {
     init_util();
     error38 = () => {
       const Sizable = {
@@ -8007,7 +8007,7 @@ var init_zh_CN = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/zh-TW.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/zh-TW.js
 function zh_TW_default() {
   return {
     localeError: error39()
@@ -8015,7 +8015,7 @@ function zh_TW_default() {
 }
 var error39;
 var init_zh_TW = __esm({
-  "node_modules/zod/v4/locales/zh-TW.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/zh-TW.js"() {
     init_util();
     error39 = () => {
       const Sizable = {
@@ -8131,7 +8131,7 @@ var init_zh_TW = __esm({
   }
 });
 
-// node_modules/zod/v4/locales/index.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/index.js
 var locales_exports = {};
 __export(locales_exports, {
   ar: () => ar_default,
@@ -8175,7 +8175,7 @@ __export(locales_exports, {
   zhTW: () => zh_TW_default
 });
 var init_locales = __esm({
-  "node_modules/zod/v4/locales/index.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/locales/index.js"() {
     init_ar();
     init_az();
     init_be();
@@ -8218,13 +8218,13 @@ var init_locales = __esm({
   }
 });
 
-// node_modules/zod/v4/core/registries.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/registries.js
 function registry() {
   return new $ZodRegistry();
 }
 var $output, $input, $ZodRegistry, globalRegistry;
 var init_registries = __esm({
-  "node_modules/zod/v4/core/registries.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/registries.js"() {
     $output = Symbol("ZodOutput");
     $input = Symbol("ZodInput");
     $ZodRegistry = class {
@@ -8273,7 +8273,7 @@ var init_registries = __esm({
   }
 });
 
-// node_modules/zod/v4/core/api.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/api.js
 function _string(Class3, params) {
   return new Class3({
     type: "string",
@@ -9125,7 +9125,7 @@ function _stringFormat(Class3, format, fnOrRegex, _params = {}) {
 }
 var TimePrecision;
 var init_api = __esm({
-  "node_modules/zod/v4/core/api.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/api.js"() {
     init_checks();
     init_schemas();
     init_util();
@@ -9139,7 +9139,7 @@ var init_api = __esm({
   }
 });
 
-// node_modules/zod/v4/core/function.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/function.js
 function _function(params) {
   return new $ZodFunction({
     type: "function",
@@ -9149,7 +9149,7 @@ function _function(params) {
 }
 var $ZodFunction;
 var init_function = __esm({
-  "node_modules/zod/v4/core/function.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/function.js"() {
     init_api();
     init_parse();
     init_schemas();
@@ -9218,7 +9218,7 @@ var init_function = __esm({
   }
 });
 
-// node_modules/zod/v4/core/to-json-schema.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/to-json-schema.js
 function toJSONSchema(input, _params) {
   if (input instanceof $ZodRegistry) {
     const gen2 = new JSONSchemaGenerator(_params);
@@ -9353,7 +9353,7 @@ function isTransforming(_schema, _ctx) {
 }
 var JSONSchemaGenerator;
 var init_to_json_schema = __esm({
-  "node_modules/zod/v4/core/to-json-schema.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/to-json-schema.js"() {
     init_registries();
     init_util();
     JSONSchemaGenerator = class {
@@ -9992,14 +9992,14 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
   }
 });
 
-// node_modules/zod/v4/core/json-schema.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/json-schema.js
 var json_schema_exports = {};
 var init_json_schema = __esm({
-  "node_modules/zod/v4/core/json-schema.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/json-schema.js"() {
   }
 });
 
-// node_modules/zod/v4/core/index.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/index.js
 var core_exports2 = {};
 __export(core_exports2, {
   $ZodAny: () => $ZodAny,
@@ -10243,7 +10243,7 @@ __export(core_exports2, {
   version: () => version
 });
 var init_core2 = __esm({
-  "node_modules/zod/v4/core/index.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/core/index.js"() {
     init_core();
     init_parse();
     init_errors();
@@ -10262,14 +10262,14 @@ var init_core2 = __esm({
   }
 });
 
-// node_modules/zod/v4/classic/checks.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/checks.js
 var init_checks2 = __esm({
-  "node_modules/zod/v4/classic/checks.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/checks.js"() {
     init_core2();
   }
 });
 
-// node_modules/zod/v4/classic/iso.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/iso.js
 var iso_exports = {};
 __export(iso_exports, {
   ZodISODate: () => ZodISODate,
@@ -10295,7 +10295,7 @@ function duration2(params) {
 }
 var ZodISODateTime, ZodISODate, ZodISOTime, ZodISODuration;
 var init_iso = __esm({
-  "node_modules/zod/v4/classic/iso.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/iso.js"() {
     init_core2();
     init_schemas2();
     ZodISODateTime = /* @__PURE__ */ $constructor("ZodISODateTime", (inst, def) => {
@@ -10317,10 +10317,10 @@ var init_iso = __esm({
   }
 });
 
-// node_modules/zod/v4/classic/errors.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/errors.js
 var initializer2, ZodError, ZodRealError;
 var init_errors2 = __esm({
-  "node_modules/zod/v4/classic/errors.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/errors.js"() {
     init_core2();
     init_core2();
     initializer2 = (inst, issues) => {
@@ -10358,10 +10358,10 @@ var init_errors2 = __esm({
   }
 });
 
-// node_modules/zod/v4/classic/parse.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/parse.js
 var parse2, parseAsync2, safeParse3, safeParseAsync2;
 var init_parse2 = __esm({
-  "node_modules/zod/v4/classic/parse.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/parse.js"() {
     init_core2();
     init_errors2();
     parse2 = /* @__PURE__ */ _parse(ZodRealError);
@@ -10371,7 +10371,7 @@ var init_parse2 = __esm({
   }
 });
 
-// node_modules/zod/v4/classic/schemas.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/schemas.js
 function string2(params) {
   return _string(ZodString, params);
 }
@@ -10780,7 +10780,7 @@ function preprocess(fn, schema) {
 }
 var ZodType, _ZodString, ZodString, ZodStringFormat, ZodEmail, ZodGUID, ZodUUID, ZodURL, ZodEmoji, ZodNanoID, ZodCUID, ZodCUID2, ZodULID, ZodXID, ZodKSUID, ZodIPv4, ZodIPv6, ZodCIDRv4, ZodCIDRv6, ZodBase64, ZodBase64URL, ZodE164, ZodJWT, ZodCustomStringFormat, ZodNumber, ZodNumberFormat, ZodBoolean, ZodBigInt, ZodBigIntFormat, ZodSymbol, ZodUndefined, ZodNull, ZodAny, ZodUnknown, ZodNever, ZodVoid, ZodDate, ZodArray, ZodObject, ZodUnion, ZodDiscriminatedUnion, ZodIntersection, ZodTuple, ZodRecord, ZodMap, ZodSet, ZodEnum, ZodLiteral, ZodFile, ZodTransform, ZodOptional, ZodNullable, ZodDefault, ZodPrefault, ZodNonOptional, ZodSuccess, ZodCatch, ZodNaN, ZodPipe, ZodReadonly, ZodTemplateLiteral, ZodLazy, ZodPromise, ZodCustom, stringbool;
 var init_schemas2 = __esm({
-  "node_modules/zod/v4/classic/schemas.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/schemas.js"() {
     init_core2();
     init_core2();
     init_checks2();
@@ -11318,7 +11318,7 @@ var init_schemas2 = __esm({
   }
 });
 
-// node_modules/zod/v4/classic/compat.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/compat.js
 function setErrorMap(map3) {
   config({
     customError: map3
@@ -11329,7 +11329,7 @@ function getErrorMap() {
 }
 var ZodIssueCode;
 var init_compat = __esm({
-  "node_modules/zod/v4/classic/compat.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/compat.js"() {
     init_core2();
     ZodIssueCode = {
       invalid_type: "invalid_type",
@@ -11347,7 +11347,7 @@ var init_compat = __esm({
   }
 });
 
-// node_modules/zod/v4/classic/coerce.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/coerce.js
 var coerce_exports = {};
 __export(coerce_exports, {
   bigint: () => bigint3,
@@ -11372,13 +11372,13 @@ function date4(params) {
   return _coercedDate(ZodDate, params);
 }
 var init_coerce = __esm({
-  "node_modules/zod/v4/classic/coerce.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/coerce.js"() {
     init_core2();
     init_schemas2();
   }
 });
 
-// node_modules/zod/v4/classic/external.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/external.js
 var external_exports = {};
 __export(external_exports, {
   $brand: () => $brand,
@@ -11590,7 +11590,7 @@ __export(external_exports, {
   xid: () => xid2
 });
 var init_external = __esm({
-  "node_modules/zod/v4/classic/external.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/external.js"() {
     init_core2();
     init_schemas2();
     init_checks2();
@@ -11608,17 +11608,17 @@ var init_external = __esm({
   }
 });
 
-// node_modules/zod/v4/classic/index.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/index.js
 var classic_default;
 var init_classic = __esm({
-  "node_modules/zod/v4/classic/index.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/classic/index.js"() {
     init_external();
     init_external();
     classic_default = external_exports;
   }
 });
 
-// node_modules/zod/v4/index.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/index.js
 var v4_exports = {};
 __export(v4_exports, {
   $brand: () => $brand,
@@ -11833,7 +11833,7 @@ __export(v4_exports, {
 });
 var v4_default;
 var init_v4 = __esm({
-  "node_modules/zod/v4/index.js"() {
+  "../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/index.js"() {
     init_classic();
     init_classic();
     v4_default = classic_default;
@@ -11843,6 +11843,39 @@ var init_v4 = __esm({
 // src/i18n.ts
 var language = "en";
 var messages = {
+  "\u0428\u0438\u0440\u0438\u043D\u0430 \u0441\u043F\u0438\u0441\u043A\u0430 \u0444\u0430\u0439\u043B\u043E\u0432": "File list width",
+  "\u2190 \u041A \u0444\u0430\u0439\u043B\u0430\u043C": "\u2190 Back to files",
+  "\u2190 \u041A \u043A\u043E\u043C\u043C\u0438\u0442\u0430\u043C": "\u2190 Back to commits",
+  "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0444\u0430\u0439\u043B": "Open file",
+  "\u0424\u0430\u0439\u043B\u044B \u043A\u043E\u043C\u043C\u0438\u0442\u0430": "Commit files",
+  "Diff \u043A\u043E\u043C\u043C\u0438\u0442\u0430": "Commit diff",
+  "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0444\u0430\u0439\u043B\u043E\u0432 \u043A\u043E\u043C\u043C\u0438\u0442\u0430\u2026": "Loading commit files\u2026",
+  "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 diff\u2026": "Loading diff\u2026",
+  "\u0412 \u043A\u043E\u043C\u043C\u0438\u0442\u0435 \u043D\u0435\u0442 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0439": "This commit has no changes",
+  "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 SHA \u043A\u043E\u043C\u043C\u0438\u0442\u0430": "Invalid commit SHA",
+  "\u0412\u0438\u0434 \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u044F": "Repository view",
+  "\u0418\u0441\u0442\u043E\u0440\u0438\u044F": "History",
+  "\u0420\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u0438": "Repositories",
+  "\u0423\u0431\u0440\u0430\u0442\u044C \u0432\u0441\u0435 \u0438\u0437 staging": "Unstage all",
+  "\u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u0432\u0441\u0435": "Stage all",
+  "\u0413\u0440\u0430\u0444 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u0432": "Commit graph",
+  "\u0418\u043D\u0434\u0435\u043A\u0441 \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0433\u043E \u043A\u043E\u043C\u043C\u0438\u0442\u0430": "Index compared with HEAD",
+  "\u0420\u0430\u0431\u043E\u0447\u0430\u044F \u043A\u043E\u043F\u0438\u044F \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0438\u043D\u0434\u0435\u043A\u0441\u0430": "Working tree compared with index",
+  "\u041D\u0430\u043F\u0438\u0441\u0430\u0442\u044C \u0441 Codex": "Write with Codex",
+  "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F\u2026": "Generating\u2026",
+  "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F \u043F\u043E \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u043D\u044B\u043C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u043C": "Generate from staged changes.",
+  "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F \u043F\u043E \u0432\u0441\u0435\u043C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u043C \u043F\u0440\u0438 \u043F\u0443\u0441\u0442\u043E\u043C staging": "Generate from all changes when staging is empty.",
+  "\u0423\u0434\u0430\u043B\u0451\u043D\u043D\u0430\u044F \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F": "Remote action",
+  "\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0435 \u0444\u0430\u0439\u043B\u0430": "File action",
+  "\u0412\u0441\u0435 \u0432\u0435\u0442\u043A\u0438": "All branches",
+  "\u041D\u0435\u0442 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u0432": "No commits",
+  "\u041B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0435 \u0432\u0435\u0442\u043A\u0438": "Local branches",
+  "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0435\u0449\u0451": "Show more",
+  "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0438\u0441\u0442\u043E\u0440\u0438\u0438\u2026": "Loading history\u2026",
+  "\u0412 \u044D\u0442\u043E\u0439 \u0432\u0435\u0442\u043A\u0435 \u043F\u043E\u043A\u0430 \u043D\u0435\u0442 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u0432": "No commits in this branch yet",
+  "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u0439 \u0434\u043B\u044F \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430 \u0438\u0441\u0442\u043E\u0440\u0438\u0438": "Select a repository to view its history",
+  "\u041F\u043E\u043A\u0430\u0437\u0430\u043D\u044B \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0435 2000 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u0432": "Showing the latest 2,000 commits",
+  "\u0422\u0435\u043A\u0443\u0449\u0430\u044F \u0432\u0435\u0442\u043A\u0430": "Current branch",
   "\u041A\u043E\u043C\u043C\u0438\u0442 \u0441 \u0442\u0438\u043F\u043E\u043C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F": "Conventional Commit",
   "\u041A\u0440\u0430\u0442\u043A\u043E\u0435 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435": "Short descriptive subject",
   "\u042F\u0437\u044B\u043A \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F": "App language",
@@ -11971,10 +12004,10 @@ function setUiLanguage(value) {
   for (const item of staticAttributes) item.node.setAttribute(item.name, t(item.original));
 }
 
-// node_modules/zod/v4/mini/parse.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod/v4/mini/parse.js
 init_core2();
 
-// node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-compat.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-compat.js
 function isZ4Schema(s) {
   const schema = s;
   return !!schema._zod;
@@ -12037,7 +12070,7 @@ function getLiteralValue(schema) {
   return void 0;
 }
 
-// node_modules/@modelcontextprotocol/sdk/dist/esm/types.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@modelcontextprotocol/sdk/dist/esm/types.js
 init_v4();
 var RELATED_TASK_META_KEY = "io.modelcontextprotocol/related-task";
 var JSONRPC_VERSION = "2.0";
@@ -13555,18 +13588,18 @@ var UrlElicitationRequiredError = class extends McpError {
   }
 };
 
-// node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/interfaces.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/interfaces.js
 function isTerminal(status) {
   return status === "completed" || status === "failed" || status === "cancelled";
 }
 
-// node_modules/zod-to-json-schema/dist/esm/Options.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod-to-json-schema/dist/esm/Options.js
 var ignoreOverride = Symbol("Let zodToJsonSchema decide on which parser to use");
 
-// node_modules/zod-to-json-schema/dist/esm/parsers/string.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/zod-to-json-schema/dist/esm/parsers/string.js
 var ALPHA_NUMERIC = new Set("ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz0123456789");
 
-// node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-json-schema-compat.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-json-schema-compat.js
 function getMethodLiteral(schema) {
   const shape = getObjectShape(schema);
   const methodSchema = shape?.method;
@@ -13587,7 +13620,7 @@ function parseWithCompat(schema, data) {
   return result.data;
 }
 
-// node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js
 var DEFAULT_REQUEST_TIMEOUT_MSEC = 6e4;
 var Protocol = class {
   constructor(_options) {
@@ -14564,7 +14597,7 @@ function mergeCapabilities(base, additional) {
   return result;
 }
 
-// node_modules/@modelcontextprotocol/ext-apps/dist/src/app.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@modelcontextprotocol/ext-apps/dist/src/app.js
 init_v4();
 init_v4();
 var p = ((X) => typeof __require < "u" ? __require : typeof Proxy < "u" ? new Proxy(X, { get: (Y, Z) => (typeof __require < "u" ? __require : Y)[Z] }) : X)(function(X) {
@@ -15033,7 +15066,7 @@ var i = class _i extends _ {
   }
 };
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/external.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/external.js
 var external_exports2 = {};
 __export(external_exports2, {
   $brand: () => $brand2,
@@ -15276,7 +15309,7 @@ __export(external_exports2, {
   xor: () => xor
 });
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/index.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/index.js
 var core_exports4 = {};
 __export(core_exports4, {
   $ZodAny: () => $ZodAny2,
@@ -15555,7 +15588,7 @@ __export(core_exports4, {
   version: () => version2
 });
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/core.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/core.js
 var _a;
 var NEVER2 = /* @__PURE__ */ Object.freeze({
   status: "aborted"
@@ -15632,7 +15665,7 @@ function config2(newConfig) {
   return globalConfig2;
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/util.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/util.js
 var util_exports2 = {};
 __export(util_exports2, {
   BIGINT_FORMAT_RANGES: () => BIGINT_FORMAT_RANGES2,
@@ -16328,7 +16361,7 @@ var Class2 = class {
   }
 };
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/errors.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/errors.js
 var initializer3 = (inst, def) => {
   inst.name = "$ZodError";
   Object.defineProperty(inst, "_zod", {
@@ -16467,7 +16500,7 @@ function prettifyError2(error90) {
   return lines.join("\n");
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/parse.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/parse.js
 var _parse2 = (_Err) => (schema, value, _ctx, _params) => {
   const ctx = _ctx ? { ..._ctx, async: false } : { async: false };
   const result = schema._zod.run({ value, issues: [] }, ctx);
@@ -16555,7 +16588,7 @@ var _safeDecodeAsync = (_Err) => async (schema, value, _ctx) => {
 };
 var safeDecodeAsync = /* @__PURE__ */ _safeDecodeAsync($ZodRealError2);
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/regexes.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/regexes.js
 var regexes_exports2 = {};
 __export(regexes_exports2, {
   base64: () => base643,
@@ -16714,7 +16747,7 @@ var sha512_hex = /^[0-9a-fA-F]{128}$/;
 var sha512_base64 = /* @__PURE__ */ fixedBase64(86, "==");
 var sha512_base64url = /* @__PURE__ */ fixedBase64url(86);
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/checks.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/checks.js
 var $ZodCheck2 = /* @__PURE__ */ $constructor2("$ZodCheck", (inst, def) => {
   var _a3;
   inst._zod ?? (inst._zod = {});
@@ -17262,7 +17295,7 @@ var $ZodCheckOverwrite2 = /* @__PURE__ */ $constructor2("$ZodCheckOverwrite", (i
   };
 });
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/doc.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/doc.js
 var Doc2 = class {
   constructor(args = []) {
     this.content = [];
@@ -17298,14 +17331,14 @@ var Doc2 = class {
   }
 };
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/versions.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/versions.js
 var version2 = {
   major: 4,
   minor: 4,
   patch: 3
 };
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/schemas.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/schemas.js
 var $ZodType2 = /* @__PURE__ */ $constructor2("$ZodType", (inst, def) => {
   var _a3;
   inst ?? (inst = {});
@@ -19398,7 +19431,7 @@ function handleRefineResult2(result, payload, input, inst) {
   }
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/index.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/index.js
 var locales_exports2 = {};
 __export(locales_exports2, {
   ar: () => ar_default2,
@@ -19455,7 +19488,7 @@ __export(locales_exports2, {
   zhTW: () => zh_TW_default2
 });
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ar.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ar.js
 var error40 = () => {
   const Sizable = {
     string: { unit: "\u062D\u0631\u0641", verb: "\u0623\u0646 \u064A\u062D\u0648\u064A" },
@@ -19562,7 +19595,7 @@ function ar_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/az.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/az.js
 var error41 = () => {
   const Sizable = {
     string: { unit: "simvol", verb: "olmal\u0131d\u0131r" },
@@ -19668,7 +19701,7 @@ function az_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/be.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/be.js
 function getBelarusianPlural2(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -19825,7 +19858,7 @@ function be_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/bg.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/bg.js
 var error43 = () => {
   const Sizable = {
     string: { unit: "\u0441\u0438\u043C\u0432\u043E\u043B\u0430", verb: "\u0434\u0430 \u0441\u044A\u0434\u044A\u0440\u0436\u0430" },
@@ -19946,7 +19979,7 @@ function bg_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ca.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ca.js
 var error44 = () => {
   const Sizable = {
     string: { unit: "car\xE0cters", verb: "contenir" },
@@ -20055,7 +20088,7 @@ function ca_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/cs.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/cs.js
 var error45 = () => {
   const Sizable = {
     string: { unit: "znak\u016F", verb: "m\xEDt" },
@@ -20167,7 +20200,7 @@ function cs_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/da.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/da.js
 var error46 = () => {
   const Sizable = {
     string: { unit: "tegn", verb: "havde" },
@@ -20283,7 +20316,7 @@ function da_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/de.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/de.js
 var error47 = () => {
   const Sizable = {
     string: { unit: "Zeichen", verb: "zu haben" },
@@ -20392,7 +20425,7 @@ function de_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/el.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/el.js
 var error48 = () => {
   const Sizable = {
     string: { unit: "\u03C7\u03B1\u03C1\u03B1\u03BA\u03C4\u03AE\u03C1\u03B5\u03C2", verb: "\u03BD\u03B1 \u03AD\u03C7\u03B5\u03B9" },
@@ -20502,7 +20535,7 @@ function el_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/en.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/en.js
 var error49 = () => {
   const Sizable = {
     string: { unit: "characters", verb: "to have" },
@@ -20615,7 +20648,7 @@ function en_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/eo.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/eo.js
 var error50 = () => {
   const Sizable = {
     string: { unit: "karaktrojn", verb: "havi" },
@@ -20725,7 +20758,7 @@ function eo_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/es.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/es.js
 var error51 = () => {
   const Sizable = {
     string: { unit: "caracteres", verb: "tener" },
@@ -20858,7 +20891,7 @@ function es_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/fa.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/fa.js
 var error52 = () => {
   const Sizable = {
     string: { unit: "\u06A9\u0627\u0631\u0627\u06A9\u062A\u0631", verb: "\u062F\u0627\u0634\u062A\u0647 \u0628\u0627\u0634\u062F" },
@@ -20973,7 +21006,7 @@ function fa_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/fi.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/fi.js
 var error53 = () => {
   const Sizable = {
     string: { unit: "merkki\xE4", subject: "merkkijonon" },
@@ -21086,7 +21119,7 @@ function fi_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/fr.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/fr.js
 var error54 = () => {
   const Sizable = {
     string: { unit: "caract\xE8res", verb: "avoir" },
@@ -21212,7 +21245,7 @@ function fr_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/fr-CA.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/fr-CA.js
 var error55 = () => {
   const Sizable = {
     string: { unit: "caract\xE8res", verb: "avoir" },
@@ -21320,7 +21353,7 @@ function fr_CA_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/he.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/he.js
 var error56 = () => {
   const TypeNames = {
     string: { label: "\u05DE\u05D7\u05E8\u05D5\u05D6\u05EA", gender: "f" },
@@ -21515,7 +21548,7 @@ function he_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/hr.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/hr.js
 var error57 = () => {
   const Sizable = {
     string: { unit: "znakova", verb: "imati" },
@@ -21638,7 +21671,7 @@ function hr_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/hu.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/hu.js
 var error58 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "legyen" },
@@ -21747,7 +21780,7 @@ function hu_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/hy.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/hy.js
 function getArmenianPlural(count, one, many) {
   return Math.abs(count) === 1 ? one : many;
 }
@@ -21895,7 +21928,7 @@ function hy_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/id.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/id.js
 var error60 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "memiliki" },
@@ -22002,7 +22035,7 @@ function id_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/is.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/is.js
 var error61 = () => {
   const Sizable = {
     string: { unit: "stafi", verb: "a\xF0 hafa" },
@@ -22112,7 +22145,7 @@ function is_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/it.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/it.js
 var error62 = () => {
   const Sizable = {
     string: { unit: "caratteri", verb: "avere" },
@@ -22221,7 +22254,7 @@ function it_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ja.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ja.js
 var error63 = () => {
   const Sizable = {
     string: { unit: "\u6587\u5B57", verb: "\u3067\u3042\u308B" },
@@ -22329,7 +22362,7 @@ function ja_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ka.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ka.js
 var error64 = () => {
   const Sizable = {
     string: { unit: "\u10E1\u10D8\u10DB\u10D1\u10DD\u10DA\u10DD", verb: "\u10E3\u10DC\u10D3\u10D0 \u10E8\u10D4\u10D8\u10EA\u10D0\u10D5\u10D3\u10D4\u10E1" },
@@ -22442,7 +22475,7 @@ function ka_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/km.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/km.js
 var error65 = () => {
   const Sizable = {
     string: { unit: "\u178F\u17BD\u17A2\u1780\u17D2\u179F\u179A", verb: "\u1782\u17BD\u179A\u1798\u17B6\u1793" },
@@ -22553,12 +22586,12 @@ function km_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/kh.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/kh.js
 function kh_default2() {
   return km_default();
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ko.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ko.js
 var error66 = () => {
   const Sizable = {
     string: { unit: "\uBB38\uC790", verb: "to have" },
@@ -22670,7 +22703,7 @@ function ko_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/lt.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/lt.js
 var capitalizeFirstCharacter = (text) => {
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
@@ -22874,7 +22907,7 @@ function lt_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/mk.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/mk.js
 var error68 = () => {
   const Sizable = {
     string: { unit: "\u0437\u043D\u0430\u0446\u0438", verb: "\u0434\u0430 \u0438\u043C\u0430\u0430\u0442" },
@@ -22984,7 +23017,7 @@ function mk_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ms.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ms.js
 var error69 = () => {
   const Sizable = {
     string: { unit: "aksara", verb: "mempunyai" },
@@ -23092,7 +23125,7 @@ function ms_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/nl.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/nl.js
 var error70 = () => {
   const Sizable = {
     string: { unit: "tekens", verb: "heeft" },
@@ -23203,7 +23236,7 @@ function nl_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/no.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/no.js
 var error71 = () => {
   const Sizable = {
     string: { unit: "tegn", verb: "\xE5 ha" },
@@ -23312,7 +23345,7 @@ function no_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ota.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ota.js
 var error72 = () => {
   const Sizable = {
     string: { unit: "harf", verb: "olmal\u0131d\u0131r" },
@@ -23422,7 +23455,7 @@ function ota_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ps.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ps.js
 var error73 = () => {
   const Sizable = {
     string: { unit: "\u062A\u0648\u06A9\u064A", verb: "\u0648\u0644\u0631\u064A" },
@@ -23537,7 +23570,7 @@ function ps_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/pl.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/pl.js
 var error74 = () => {
   const Sizable = {
     string: { unit: "znak\xF3w", verb: "mie\u0107" },
@@ -23647,7 +23680,7 @@ function pl_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/pt.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/pt.js
 var error75 = () => {
   const Sizable = {
     string: { unit: "caracteres", verb: "ter" },
@@ -23756,7 +23789,7 @@ function pt_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ro.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ro.js
 var error76 = () => {
   const Sizable = {
     string: { unit: "caractere", verb: "s\u0103 aib\u0103" },
@@ -23876,7 +23909,7 @@ function ro_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ru.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ru.js
 function getRussianPlural2(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -24033,7 +24066,7 @@ function ru_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/sl.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/sl.js
 var error78 = () => {
   const Sizable = {
     string: { unit: "znakov", verb: "imeti" },
@@ -24143,7 +24176,7 @@ function sl_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/sv.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/sv.js
 var error79 = () => {
   const Sizable = {
     string: { unit: "tecken", verb: "att ha" },
@@ -24254,7 +24287,7 @@ function sv_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ta.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ta.js
 var error80 = () => {
   const Sizable = {
     string: { unit: "\u0B8E\u0BB4\u0BC1\u0BA4\u0BCD\u0BA4\u0BC1\u0B95\u0BCD\u0B95\u0BB3\u0BCD", verb: "\u0B95\u0BCA\u0BA3\u0BCD\u0B9F\u0BBF\u0BB0\u0BC1\u0B95\u0BCD\u0B95 \u0BB5\u0BC7\u0BA3\u0BCD\u0B9F\u0BC1\u0BAE\u0BCD" },
@@ -24365,7 +24398,7 @@ function ta_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/th.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/th.js
 var error81 = () => {
   const Sizable = {
     string: { unit: "\u0E15\u0E31\u0E27\u0E2D\u0E31\u0E01\u0E29\u0E23", verb: "\u0E04\u0E27\u0E23\u0E21\u0E35" },
@@ -24476,7 +24509,7 @@ function th_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/tr.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/tr.js
 var error82 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "olmal\u0131" },
@@ -24582,7 +24615,7 @@ function tr_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/uk.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/uk.js
 var error83 = () => {
   const Sizable = {
     string: { unit: "\u0441\u0438\u043C\u0432\u043E\u043B\u0456\u0432", verb: "\u043C\u0430\u0442\u0438\u043C\u0435" },
@@ -24691,12 +24724,12 @@ function uk_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ua.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ua.js
 function ua_default2() {
   return uk_default();
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ur.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/ur.js
 var error84 = () => {
   const Sizable = {
     string: { unit: "\u062D\u0631\u0648\u0641", verb: "\u06C1\u0648\u0646\u0627" },
@@ -24807,7 +24840,7 @@ function ur_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/uz.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/uz.js
 var error85 = () => {
   const Sizable = {
     string: { unit: "belgi", verb: "bo\u2018lishi kerak" },
@@ -24918,7 +24951,7 @@ function uz_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/vi.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/vi.js
 var error86 = () => {
   const Sizable = {
     string: { unit: "k\xFD t\u1EF1", verb: "c\xF3" },
@@ -25027,7 +25060,7 @@ function vi_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/zh-CN.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/zh-CN.js
 var error87 = () => {
   const Sizable = {
     string: { unit: "\u5B57\u7B26", verb: "\u5305\u542B" },
@@ -25137,7 +25170,7 @@ function zh_CN_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/zh-TW.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/zh-TW.js
 var error88 = () => {
   const Sizable = {
     string: { unit: "\u5B57\u5143", verb: "\u64C1\u6709" },
@@ -25245,7 +25278,7 @@ function zh_TW_default2() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/yo.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/locales/yo.js
 var error89 = () => {
   const Sizable = {
     string: { unit: "\xE0mi", verb: "n\xED" },
@@ -25353,7 +25386,7 @@ function yo_default() {
   };
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/registries.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/registries.js
 var _a2;
 var $output2 = Symbol("ZodOutput");
 var $input2 = Symbol("ZodInput");
@@ -25403,7 +25436,7 @@ function registry2() {
 (_a2 = globalThis).__zod_globalRegistry ?? (_a2.__zod_globalRegistry = registry2());
 var globalRegistry2 = globalThis.__zod_globalRegistry;
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/api.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/api.js
 // @__NO_SIDE_EFFECTS__
 function _string2(Class3, params) {
   return new Class3({
@@ -26442,7 +26475,7 @@ function _stringFormat2(Class3, format, fnOrRegex, _params = {}) {
   return inst;
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/to-json-schema.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/to-json-schema.js
 function initializeContext(params) {
   let target = params?.target ?? "draft-2020-12";
   if (target === "draft-4")
@@ -26801,7 +26834,7 @@ var createStandardJSONSchemaMethod = (schema, io, processors = {}) => (params) =
   return finalize(ctx, schema);
 };
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/json-schema-processors.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/json-schema-processors.js
 var formatMap = {
   guid: "uuid",
   url: "uri",
@@ -27345,7 +27378,7 @@ function toJSONSchema2(input, params) {
   return finalize(ctx, input);
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/json-schema-generator.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/json-schema-generator.js
 var JSONSchemaGenerator2 = class {
   /** @deprecated Access via ctx instead */
   get metadataRegistry() {
@@ -27420,10 +27453,10 @@ var JSONSchemaGenerator2 = class {
   }
 };
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/json-schema.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/core/json-schema.js
 var json_schema_exports2 = {};
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/schemas.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/schemas.js
 var schemas_exports4 = {};
 __export(schemas_exports4, {
   ZodAny: () => ZodAny2,
@@ -27594,7 +27627,7 @@ __export(schemas_exports4, {
   xor: () => xor
 });
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/checks.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/checks.js
 var checks_exports4 = {};
 __export(checks_exports4, {
   endsWith: () => _endsWith2,
@@ -27628,7 +27661,7 @@ __export(checks_exports4, {
   uppercase: () => _uppercase2
 });
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/iso.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/iso.js
 var iso_exports2 = {};
 __export(iso_exports2, {
   ZodISODate: () => ZodISODate2,
@@ -27669,7 +27702,7 @@ function duration4(params) {
   return _isoDuration2(ZodISODuration2, params);
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/errors.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/errors.js
 var initializer4 = (inst, issues) => {
   $ZodError2.init(inst, issues);
   inst.name = "ZodError";
@@ -27709,7 +27742,7 @@ var ZodRealError2 = /* @__PURE__ */ $constructor2("ZodError", initializer4, {
   Parent: Error
 });
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/parse.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/parse.js
 var parse4 = /* @__PURE__ */ _parse2(ZodRealError2);
 var parseAsync4 = /* @__PURE__ */ _parseAsync2(ZodRealError2);
 var safeParse5 = /* @__PURE__ */ _safeParse2(ZodRealError2);
@@ -27723,7 +27756,7 @@ var safeDecode2 = /* @__PURE__ */ _safeDecode(ZodRealError2);
 var safeEncodeAsync2 = /* @__PURE__ */ _safeEncodeAsync(ZodRealError2);
 var safeDecodeAsync2 = /* @__PURE__ */ _safeDecodeAsync(ZodRealError2);
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/schemas.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/schemas.js
 var _installedGroups = /* @__PURE__ */ new WeakMap();
 function _installLazyMethods(inst, group, methods) {
   const proto = Object.getPrototypeOf(inst);
@@ -29013,7 +29046,7 @@ function preprocess2(fn, schema) {
   });
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/compat.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/compat.js
 var ZodIssueCode2 = {
   invalid_type: "invalid_type",
   too_big: "too_big",
@@ -29039,7 +29072,7 @@ var ZodFirstPartyTypeKind;
 /* @__PURE__ */ (function(ZodFirstPartyTypeKind2) {
 })(ZodFirstPartyTypeKind || (ZodFirstPartyTypeKind = {}));
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/from-json-schema.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/from-json-schema.js
 var z2 = {
   ...schemas_exports4,
   ...checks_exports4,
@@ -29519,7 +29552,7 @@ function fromJSONSchema(schema, params) {
   return convertSchema(normalized, ctx);
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/coerce.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/coerce.js
 var coerce_exports2 = {};
 __export(coerce_exports2, {
   bigint: () => bigint6,
@@ -29544,10 +29577,10 @@ function date8(params) {
   return _coercedDate2(ZodDate2, params);
 }
 
-// node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/external.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/node_modules/zod/v4/classic/external.js
 config2(en_default2());
 
-// node_modules/@openai/mcp-extensions/dist/shared/resources.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/dist/shared/resources.js
 var OPENAI_RESOURCE_METADATA_KEY = "openai/resource";
 var OpenAIResourceToolCallMetadataSchema = external_exports2.object({
   [OPENAI_RESOURCE_METADATA_KEY]: external_exports2.object({
@@ -29555,7 +29588,7 @@ var OpenAIResourceToolCallMetadataSchema = external_exports2.object({
   }).optional()
 });
 
-// node_modules/@openai/mcp-extensions/dist/app/deep-link.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/dist/app/deep-link.js
 var OPENAI_DEEP_LINK_KEY = "openai/deepLink";
 var OpenAIDeepLinkHostStateSchema = external_exports2.object({
   url: external_exports2.string()
@@ -29581,7 +29614,7 @@ function createDeepLink(app2) {
   };
 }
 
-// node_modules/@openai/mcp-extensions/dist/app/files.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/dist/app/files.js
 var OPENAI_FILE_OPEN_METHOD = "openai/files/open";
 var OpenAIFileOpenParamsSchema = external_exports2.strictObject({
   path: external_exports2.string().min(1)
@@ -29596,7 +29629,7 @@ function createFiles(app2) {
   };
 }
 
-// node_modules/@openai/mcp-extensions/dist/app/message.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/dist/app/message.js
 var OPENAI_MESSAGE_KEY = "openai/message";
 var OpenAIMessageOptionsSchema = external_exports2.object({
   /** Which conversation receives the content. */
@@ -29617,7 +29650,7 @@ function createMessage(app2) {
   };
 }
 
-// node_modules/@openai/mcp-extensions/dist/app/model-context.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/dist/app/model-context.js
 var OPENAI_MODEL_CONTEXT_KEY = "openai/modelContext";
 var ModelContextUpdateIdSchema = external_exports2.string().min(1);
 var OpenAIModelContextMetadataSchema = external_exports2.object({
@@ -29647,10 +29680,10 @@ function createModelContext(app2) {
   };
 }
 
-// node_modules/@openai/mcp-extensions/dist/shared/strings.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/dist/shared/strings.js
 var NonBlankStringSchema = external_exports2.string().regex(/\S/);
 
-// node_modules/@openai/mcp-extensions/dist/app/resources.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/dist/app/resources.js
 var OPENAI_MCP_APP_RESOURCE_WRITE_METHOD = "openai/resources/write";
 var ResourceWriteBaseSchema = {
   ifMatch: external_exports2.string().min(1).optional(),
@@ -29748,7 +29781,7 @@ function getOpenAIResourceMetadata(meta3) {
   return parsedMetadata.data[OPENAI_RESOURCE_METADATA_KEY];
 }
 
-// node_modules/@openai/mcp-extensions/dist/app/extensions.js
+// ../../git-workspace-ui.eSS3cAkV/updated/node_modules/@openai/mcp-extensions/dist/app/extensions.js
 var interactionCursorSchema = external_exports2.enum(["default", "pointer"]).catch("pointer");
 var OpenAIExtensions = class {
   deepLink;
@@ -29795,8 +29828,312 @@ var OpenAIExtensions = class {
   }
 };
 
+// src/history.ts
+var colors = {
+  "31": "#eb719d",
+  "32": "#94b65a",
+  "33": "#e99c34",
+  "34": "#539cff",
+  "35": "#bd86e4",
+  "36": "#42b9a9"
+};
+var allBranches = "@{all}";
+var svgNamespace = "http://www.w3.org/2000/svg";
+var columnStep = 7;
+function graphCells(line) {
+  let color = "";
+  return line.split(/\x1b\[([0-9;]*)m/).flatMap((part, index) => {
+    if (index % 2) {
+      color = colors[part] || "";
+      return [];
+    }
+    return Array.from(part, (mark) => ({ mark, color }));
+  });
+}
+function graphEnds(cells, side) {
+  const ends = /* @__PURE__ */ new Map();
+  cells.forEach(({ mark, color }, index) => {
+    if (mark === "|" || mark === "*") ends.set(index, color);
+    else if (mark === "/") ends.set(index + (side === "top" ? 1 : -1), color);
+    else if (mark === "\\") ends.set(index + (side === "top" ? -1 : 1), color);
+    else if (mark === "." && side === "bottom") ends.set(index + 1, color);
+  });
+  return ends;
+}
+function graphLine(cells, previous, next, width, connector) {
+  const graph = document.createElementNS(svgNamespace, "svg");
+  const height = connector ? 16 : 44;
+  const middle = height / 2;
+  graph.setAttribute("width", String(width));
+  graph.setAttribute("height", String(height));
+  graph.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  graph.classList.add("history-graph");
+  graph.setAttribute("aria-hidden", "true");
+  const before = graphEnds(previous, "bottom");
+  const after = graphEnds(next, "top");
+  const path = (d2, color) => {
+    const edge = document.createElementNS(svgNamespace, "path");
+    edge.setAttribute("d", d2);
+    edge.setAttribute("stroke", color || "var(--accent)");
+    edge.setAttribute("fill", "none");
+    edge.setAttribute("stroke-width", "1.5");
+    graph.append(edge);
+  };
+  cells.forEach(({ mark, color }, index) => {
+    const x = 12 + index * columnStep;
+    const left = x - columnStep, right = x + columnStep;
+    if (mark === "|") path(`M${x} 0 V${height}`, color);
+    if (mark === "/" || mark === "\\") {
+      const direction = mark === "/" ? -1 : 1;
+      const from = x - direction * columnStep * (previous[index - direction]?.mark === mark ? 0.5 : 1);
+      const to = x + direction * columnStep * (next[index + direction]?.mark === mark ? 0.5 : 1);
+      const d2 = `M${from} 0 C${from} ${middle}, ${to} ${middle}, ${to} ${height}`;
+      path(d2, color);
+    }
+    if (mark === "-" || mark === "_") {
+      const y = mark === "-" ? middle : height;
+      path(`M${left} ${y} H${right}`, color);
+    }
+    if (mark === ".") path(`M${left} ${middle} Q${right} ${middle}, ${right} ${height}`, color);
+    if (mark === "*") {
+      const nodeColor = color || after.get(index) || before.get(index) || "var(--accent)";
+      if (before.has(index)) path(`M${x} 0 V${middle}`, before.get(index) || nodeColor);
+      if (after.has(index)) path(`M${x} ${middle} V${height}`, after.get(index) || nodeColor);
+      for (const radius of [5, 1.8]) {
+        const circle = document.createElementNS(svgNamespace, "circle");
+        circle.setAttribute("cx", String(x));
+        circle.setAttribute("cy", String(middle));
+        circle.setAttribute("r", String(radius));
+        circle.setAttribute("fill", radius === 5 ? "var(--panel)" : nodeColor);
+        circle.setAttribute("stroke", nodeColor);
+        circle.setAttribute("stroke-width", "1.4");
+        graph.append(circle);
+      }
+    }
+  });
+  return graph;
+}
+function renderGraph(data, list, all, select) {
+  const rows = document.createDocumentFragment();
+  const timestampFormat = new Intl.DateTimeFormat(document.documentElement.lang || void 0, {
+    dateStyle: "short",
+    timeStyle: "short"
+  });
+  const lines = data.commits.flatMap((commit2) => commit2.graph.map((line, index) => ({
+    cells: graphCells(line.trimEnd()),
+    commit: index === commit2.graph.length - 1 ? commit2 : void 0
+  })));
+  for (const [index, { cells, commit: commit2 }] of lines.entries()) {
+    const row = document.createElement("li");
+    const width = 24 + Math.max(0, cells.length - 1) * columnStep;
+    row.append(graphLine(cells, lines[index - 1]?.cells || [], lines[index + 1]?.cells || [], width, !commit2));
+    if (!commit2) {
+      row.className = "history-connector";
+      row.setAttribute("aria-hidden", "true");
+      rows.append(row);
+      continue;
+    }
+    const details = document.createElement("button");
+    details.type = "button";
+    details.onclick = () => select(commit2);
+    details.className = "history-details";
+    const heading = document.createElement("span");
+    heading.className = "history-commit-heading";
+    const metadata = document.createElement("span");
+    metadata.className = "history-commit-meta";
+    const subject = document.createElement("span");
+    subject.className = "history-subject";
+    subject.textContent = commit2.subject || commit2.hash.slice(0, 8);
+    row.title = [commit2.subject, commit2.hash, commit2.author, commit2.date].join("\n");
+    heading.append(subject);
+    for (const ref of data.refs.filter((ref2) => ref2.hash === commit2.hash)) {
+      const badge = document.createElement("span");
+      badge.className = ref.remote ? "history-ref remote" : "history-ref";
+      if (!ref.remote && ref.name === (all ? data.currentBranch : data.branch)) badge.classList.add("active");
+      badge.textContent = ref.name;
+      badge.title = ref.name;
+      heading.append(badge);
+    }
+    const hash2 = document.createElement("code");
+    hash2.textContent = commit2.hash.slice(0, 8);
+    metadata.append(hash2);
+    const date9 = new Date(commit2.date);
+    if (Number.isFinite(date9.getTime())) {
+      const timestamp = document.createElement("time");
+      timestamp.dateTime = commit2.date;
+      timestamp.textContent = timestampFormat.format(date9);
+      metadata.append(timestamp);
+    }
+    details.append(heading, metadata);
+    row.append(details);
+    rows.append(row);
+  }
+  list.replaceChildren(rows);
+}
+function mountHistory(load, loadFiles, loadDiff, renderDiff2) {
+  const changes = document.querySelector("#changesTab");
+  const tab = document.querySelector("#historyTab");
+  const branchSelect = document.querySelector("#historyBranch");
+  const list = document.querySelector("#historyCommits");
+  const status = document.getElementById("historyStatus");
+  const reload = document.querySelector("#historyReload");
+  const more = document.querySelector("#historyMore");
+  const history = document.getElementById("historyView");
+  let repo = "", current2 = "", branch;
+  let limit = 100, request = 0;
+  const overview = document.getElementById("historyOverview");
+  const detail = document.getElementById("historyDetail");
+  const back = document.getElementById("historyBack");
+  const picker = document.getElementById("historyFilePicker");
+  const file3 = document.querySelector("#historyFile");
+  const detailStatus = document.getElementById("historyDetailStatus");
+  const diff = document.getElementById("historyDiff");
+  let detailRequest = 0, hash2 = "", trigger = null;
+  function closeDetail() {
+    detailRequest++;
+    hash2 = "";
+    detail.hidden = true;
+    overview.hidden = false;
+    trigger = null;
+  }
+  back.onclick = () => {
+    const previous = trigger;
+    closeDetail();
+    if (previous?.isConnected) previous.focus();
+    else branchSelect.focus();
+  };
+  function setStatus(text) {
+    detailStatus.textContent = t(text);
+    detailStatus.hidden = !text;
+  }
+  async function showDiff2() {
+    if (!hash2 || !file3.value) return;
+    const id = ++detailRequest;
+    diff.hidden = true;
+    setStatus("\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 diff\u2026");
+    try {
+      const result = await loadDiff(repo, hash2, file3.value);
+      if (id !== detailRequest) return;
+      renderDiff2(diff, result.diff);
+      diff.scrollTop = diff.scrollLeft = 0;
+      diff.hidden = false;
+      setStatus("");
+    } catch (error90) {
+      if (id === detailRequest) setStatus(String(error90));
+    }
+  }
+  file3.onchange = () => void showDiff2();
+  async function selectCommit(commit2) {
+    const id = ++detailRequest;
+    trigger = document.activeElement;
+    hash2 = commit2.hash;
+    document.getElementById("historyCommitTitle").textContent = commit2.subject;
+    document.getElementById("historyCommitHash").textContent = hash2.slice(0, 8);
+    document.getElementById("historyCommitHash").title = hash2;
+    picker.hidden = diff.hidden = true;
+    overview.hidden = true;
+    detail.hidden = false;
+    back.focus();
+    setStatus("\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0444\u0430\u0439\u043B\u043E\u0432 \u043A\u043E\u043C\u043C\u0438\u0442\u0430\u2026");
+    try {
+      const { files } = await loadFiles(repo, hash2);
+      if (id !== detailRequest) return;
+      if (!files.length) {
+        setStatus("\u0412 \u043A\u043E\u043C\u043C\u0438\u0442\u0435 \u043D\u0435\u0442 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0439");
+        return;
+      }
+      file3.replaceChildren(...files.map((path) => new Option(path, path)));
+      picker.hidden = false;
+      await showDiff2();
+    } catch (error90) {
+      if (id === detailRequest) setStatus(String(error90));
+    }
+  }
+  async function refresh2(clear = false) {
+    const id = ++request;
+    if (clear) {
+      list.replaceChildren();
+      more.hidden = true;
+    }
+    branchSelect.disabled = true;
+    reload.disabled = true;
+    more.disabled = true;
+    status.textContent = t(repo ? "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0438\u0441\u0442\u043E\u0440\u0438\u0438\u2026" : "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u0439 \u0434\u043B\u044F \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430 \u0438\u0441\u0442\u043E\u0440\u0438\u0438");
+    if (!repo) {
+      branchSelect.replaceChildren();
+      return;
+    }
+    try {
+      const all = branch === allBranches;
+      const data = await load(repo, all ? void 0 : branch, limit, all);
+      if (id !== request) return;
+      const branches = data.currentBranch ? data.branches : ["", ...data.branches];
+      branchSelect.replaceChildren(...branches.map((name) => {
+        const label = name || "HEAD";
+        return new Option(name === data.currentBranch ? `${label} \xB7 ${t("\u0422\u0435\u043A\u0443\u0449\u0430\u044F \u0432\u0435\u0442\u043A\u0430")}` : label, name);
+      }));
+      branchSelect.add(new Option(t("\u0412\u0441\u0435 \u0432\u0435\u0442\u043A\u0438"), allBranches));
+      branchSelect.value = all ? allBranches : data.branch;
+      renderGraph(data, list, all, (commit2) => void selectCommit(commit2));
+      more.hidden = !data.more || limit >= 2e3;
+      status.textContent = !data.commits.length ? t(all ? "\u041D\u0435\u0442 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u0432" : "\u0412 \u044D\u0442\u043E\u0439 \u0432\u0435\u0442\u043A\u0435 \u043F\u043E\u043A\u0430 \u043D\u0435\u0442 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u0432") : data.more && limit >= 2e3 ? t("\u041F\u043E\u043A\u0430\u0437\u0430\u043D\u044B \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0435 2000 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u0432") : "";
+    } catch (error90) {
+      if (id === request) status.textContent = String(error90);
+    } finally {
+      if (id === request) {
+        branchSelect.disabled = !branchSelect.options.length;
+        reload.disabled = false;
+        more.disabled = false;
+      }
+    }
+  }
+  function show(open) {
+    history.hidden = !open;
+    document.getElementById("changesSplit").hidden = open;
+    document.querySelector(".changes-heading").hidden = open;
+    document.querySelector(".composer").hidden = open;
+    closeDetail();
+    tab.setAttribute("aria-pressed", String(open));
+    changes.setAttribute("aria-pressed", String(!open));
+    if (open) void refresh2(true);
+    else request++;
+  }
+  tab.onclick = () => {
+    if (history.hidden) show(true);
+  };
+  const showChanges = () => {
+    if (!history.hidden) show(false);
+  };
+  changes.onclick = showChanges;
+  reload.onclick = () => void refresh2();
+  more.onclick = () => {
+    limit = Math.min(2e3, limit + 100);
+    void refresh2();
+  };
+  branchSelect.onchange = () => {
+    branch = branchSelect.value;
+    limit = 100;
+    void refresh2(true);
+  };
+  return {
+    showChanges,
+    reload() {
+      if (!history.hidden) void refresh2();
+    },
+    sync(id, checkedOut) {
+      if (repo === id && current2 === checkedOut) return;
+      repo = id;
+      current2 = checkedOut;
+      branch = void 0;
+      limit = 100;
+      closeDetail();
+      if (!history.hidden) void refresh2(true);
+    }
+  };
+}
+
 // src/app.ts
-var app = new i({ name: "Git Workspace", version: "1.5.3" });
+var app = new i({ name: "Git Workspace", version: "1.7.11" });
 var extensions = new OpenAIExtensions(app);
 var el = (id) => document.getElementById(id);
 var buttonIds = ["stageAll", "commit", "commitPush", "push", "generate"];
@@ -29811,13 +30148,14 @@ var generationRepo = "";
 var drafts = /* @__PURE__ */ new Map();
 var generated = /* @__PURE__ */ new Map();
 var fullFile = false;
-var repoMenuSignature = "";
+var repoCardsSignature = "";
+var displayedRepo = "";
 var remoteInfo;
 var remoteInfoRepo = "";
 var pendingPush = /* @__PURE__ */ new Set();
 var operation = "";
 var mainIsPush = () => !!current() && !current().files.length && (pendingPush.has(selected) || current().outgoing > 0);
-var draftTimer;
+var draftTimers = /* @__PURE__ */ new Map();
 var message = el("message");
 var notice = (text, error90 = false) => {
   el("notice").textContent = t(text);
@@ -29830,6 +30168,58 @@ async function call(action2, args = {}) {
     throw new Error(data?.error || t("\u0421\u0435\u0440\u0432\u0435\u0440 \u043D\u0435 \u0432\u0435\u0440\u043D\u0443\u043B \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442"));
   return data;
 }
+var changesSplit = el("changesSplit");
+var changesDivider = el("changesDivider");
+var narrowChanges = matchMedia("(max-width: 820px)");
+var historyView = mountHistory(
+  (repo, branch, historyLimit, historyAll) => call("history", { repo, branch, historyLimit, historyAll }),
+  (repo, hash2) => call("history-files", { repo, hash: hash2 }),
+  (repo, hash2, file3) => call("history-diff", { repo, hash: hash2, file: file3 }),
+  renderDiff
+);
+function resizeFiles(percent) {
+  const width = Math.round(Math.min(62, Math.max(25, percent)));
+  changesSplit.style.setProperty("--files-width", width + "%");
+  changesDivider.setAttribute("aria-valuenow", String(width));
+}
+changesDivider.setAttribute("aria-valuemin", "25");
+changesDivider.setAttribute("aria-valuemax", "62");
+resizeFiles(36);
+var dragOffset = 0;
+changesDivider.onpointerdown = (event) => {
+  if (event.button !== 0) return;
+  event.preventDefault();
+  changesDivider.blur();
+  dragOffset = event.clientX - changesDivider.getBoundingClientRect().left;
+  changesDivider.setPointerCapture(event.pointerId);
+  changesDivider.classList.add("dragging");
+};
+changesDivider.onlostpointercapture = () => changesDivider.classList.remove("dragging");
+changesDivider.onpointermove = (event) => {
+  if (!changesDivider.hasPointerCapture(event.pointerId)) return;
+  const { left, width } = changesSplit.getBoundingClientRect();
+  if (width) resizeFiles((event.clientX - left - dragOffset) / width * 100);
+};
+changesDivider.onkeydown = (event) => {
+  if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+  event.preventDefault();
+  resizeFiles(Number(changesDivider.getAttribute("aria-valuenow")) + (event.key === "ArrowLeft" ? -3 : 3));
+};
+el("backToFiles").onclick = () => {
+  changesSplit.classList.remove("show-file-diff");
+  el("files").querySelector(".file.active .file-select")?.focus();
+};
+el("openSelectedFile").onclick = async () => {
+  const { file: file3 } = selection;
+  const repo = selected;
+  try {
+    if (!extensions.files) throw new Error(t("\u041E\u0442\u043A\u0440\u044B\u0442\u0438\u0435 \u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E \u0432 \u044D\u0442\u043E\u043C \u0440\u0435\u0436\u0438\u043C\u0435 Codex"));
+    const { path } = await call("file-path", { repo, file: file3 });
+    if (repo === selected && file3 === selection.file && !changesSplit.hidden) await extensions.files.open(path);
+  } catch (error90) {
+    if (repo === selected && file3 === selection.file) notice(String(error90), true);
+  }
+};
 var current = () => snapshot?.repos.find((r) => r.id === selected);
 function renderRemote() {
   const repo = current(), status = el("remoteStatus"), button = el("connectRemote");
@@ -29866,9 +30256,10 @@ function controls() {
   const repo = current(), changes = !!repo?.files.length, invalid = !repo || !!repo.error;
   for (const id of buttonIds)
     el(id).disabled = busy || invalid || id === "generate" && !!jobId || id === "stageAll" && !changes || id === "commitPush" && !changes;
+  el("push").hidden = !repo || mainIsPush();
   el("commit").disabled = busy || invalid || !mainIsPush() && !changes;
   el("commit").innerHTML = t(`<span>${mainIsPush() ? "Push" : "Commit"}</span>${operation ? t('<span class="spinner" aria-label="\u0412\u044B\u043F\u043E\u043B\u043D\u044F\u0435\u0442\u0441\u044F"></span>') : ""}`);
-  for (const button of Array.from(el("repos").querySelectorAll("button")))
+  for (const button of Array.from(el("repoCards").querySelectorAll("button")))
     button.disabled = busy;
   el("root").disabled = busy || !!jobId;
   message.disabled = busy;
@@ -29876,7 +30267,11 @@ function controls() {
   el("operationLoader").hidden = true;
   el("remoteConfirm").disabled = busy;
   renderRemote();
-  el("generate").innerHTML = jobId ? '<span class="spinner"></span>' : icons.sparkle;
+  const generating = jobId && generationRepo === selected;
+  el("generate").innerHTML = generating ? '<span class="spinner" aria-hidden="true"></span>' : icons.sparkle;
+  const generateLabel = document.createElement("span");
+  generateLabel.textContent = t(generating ? "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F\u2026" : "\u0421\u0433\u0435\u043D\u0435\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435");
+  el("generate").append(generateLabel);
   el("generate").setAttribute("aria-label", t("\u0421\u0433\u0435\u043D\u0435\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435"));
   el("generate").title = t(`\u0421\u0433\u0435\u043D\u0435\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435 \xB7 ${snapshot?.config.model || "gpt-6-luna"}`);
   el("stale").textContent = generated.has(selected) && generated.get(selected) !== (repo?.changesHash || repo?.stagedHash) ? t("\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u043E\u0431\u043D\u043E\u0432\u0438\u043B\u0438\u0441\u044C \u2014 \u043F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435") : "";
@@ -29884,7 +30279,6 @@ function controls() {
 async function action(task, label = "") {
   if (busy)
     return;
-  el("commitMenu").open = false;
   busy = true;
   operation = label;
   controls();
@@ -29897,15 +30291,19 @@ async function action(task, label = "") {
     busy = false;
     operation = "";
     render();
+    if (label === "commit" || label === "push") historyView.reload();
   }
 }
 var svg = (body) => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
 var icons = {
+  changes: svg('<rect x="8" y="3" width="12" height="14" rx="2"/><path d="M16 21H6a2 2 0 0 1-2-2V9"/>'),
+  history: svg('<path d="M3.5 9a9 9 0 1 1 2.1 9.4M3.5 4.5V9H8M12 7v5l3 2"/>'),
+  branch: svg('<path d="M6 8v8m3 3h3a6 6 0 0 0 6-6V8"/><circle cx="6" cy="5" r="3"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/>'),
+  disclosure: svg('<path d="m6 9 6 6 6-6"/>'),
   plus: svg('<path d="M12 5v14M5 12h14"/>'),
   minus: svg('<path d="M5 12h14"/>'),
   discard: svg('<path d="M4 10h10a6 6 0 1 1-5.5 8M4 10l5-5M4 10l5 5"/>'),
-  open: svg('<path d="M14 3h7v7M21 3l-9 9M10 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/>'),
-  sparkle: svg('<path d="m10 2 2.3 6.7L19 11l-6.7 2.3L10 20l-2.3-6.7L1 11l6.7-2.3L10 2zM19 15l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/>')
+  sparkle: svg('<path d="M10 2.5c.8 4.1 2.4 5.7 6.5 6.5-4.1.8-5.7 2.4-6.5 6.5-.8-4.1-2.4-5.7-6.5-6.5 4.1-.8 5.7-2.4 6.5-6.5ZM18.5 12.5c.4 2.5 1.5 3.6 4 4-2.5.4-3.6 1.5-4 4-.4-2.5-1.5-3.6-4-4 2.5-.4 3.6-1.5 4-4ZM5 16v5m-2.5-2.5h5"/>')
 };
 function iconButton(icon, label, handler) {
   const button = document.createElement("button");
@@ -29917,110 +30315,235 @@ function iconButton(icon, label, handler) {
   button.onclick = handler;
   return button;
 }
-function render() {
-  if (!snapshot)
-    return;
-  if (!snapshot.repos.some((r) => r.id === selected))
-    selected = snapshot.repos[0]?.id || "";
-  const repo = current();
-  el("repoLabel").textContent = repo ? `${repo.name} \xB7 ${repo.branch}` : snapshot.repos.length ? t("\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u0439") : t("\u041D\u0435\u0442 \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u044F");
-  const signature = JSON.stringify([selected, busy, snapshot.repos.map((r) => [r.id, r.name, r.branch, r.files.length, r.error])]);
-  if (signature !== repoMenuSignature) {
-    repoMenuSignature = signature;
-    const menu = el("repos");
-    menu.replaceChildren();
-    for (const item of snapshot.repos) {
-      const button = document.createElement("button");
-      button.className = "repo-option";
-      button.setAttribute("aria-pressed", String(item.id === selected));
+function setActiveRepository(id) {
+  selected = id;
+  message.value = drafts.get(id) || "";
+  selection = { file: "", staged: false };
+  changesSplit.classList.remove("show-file-diff");
+  el("openSelectedFile").hidden = true;
+  diffText = "";
+  remoteInfo = void 0;
+  notice("");
+  el("diff").replaceChildren();
+  el("diffRuler").replaceChildren();
+  el("filename").textContent = t("\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0444\u0430\u0439\u043B");
+  el("diffContext").hidden = true;
+}
+var topNavigation = matchMedia("(max-width: 660px)");
+function revealRepository(card, smooth) {
+  const strip = el("repoCards");
+  const viewport = strip.getBoundingClientRect();
+  const item = card.getBoundingClientRect();
+  strip.scrollTo({
+    ...topNavigation.matches ? { left: strip.scrollLeft + (item.left + item.width / 2) - (viewport.left + viewport.width / 2) } : { top: strip.scrollTop + (item.top + item.height / 2) - (viewport.top + viewport.height / 2) },
+    behavior: smooth && !matchMedia("(prefers-reduced-motion: reduce)").matches ? "smooth" : "instant"
+  });
+}
+topNavigation.addEventListener("change", () => {
+  const active = el("repoCards").querySelector('[aria-pressed="true"]');
+  if (active) revealRepository(active, false);
+});
+function selectRepository(id, card) {
+  if (busy) return;
+  if (id !== selected) {
+    setActiveRepository(id);
+    displayedRepo = id;
+    render();
+    void loadRemoteInfo();
+  }
+  revealRepository(card, true);
+}
+function renderRepositories(repos, hasRoot) {
+  const strip = el("repoCards");
+  const signature = JSON.stringify([hasRoot, document.documentElement.lang, repos.map((repo) => [
+    repo.id,
+    repo.name,
+    repo.branch,
+    repo.files.length,
+    repo.error
+  ])]);
+  if (signature !== repoCardsSignature) {
+    repoCardsSignature = signature;
+    const { scrollLeft, scrollTop } = strip;
+    const focusedId = strip.contains(document.activeElement) ? document.activeElement.dataset.repoId : void 0;
+    const buttons = repos.map((repo) => {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "repo-card";
+      card.dataset.repoId = repo.id;
+      card.title = [repo.name, repo.branch].filter(Boolean).join(" \xB7 ");
       const name = document.createElement("strong");
-      name.textContent = item.name;
+      name.textContent = repo.name;
       const branch = document.createElement("span");
-      branch.textContent = item.branch;
+      branch.className = "repo-card-branch";
+      branch.innerHTML = icons.branch;
+      const branchName = document.createElement("span");
+      branchName.textContent = repo.branch || t("\u041D\u0435\u0442 \u0432\u0435\u0442\u043A\u0438");
+      branch.append(branchName);
       const count = document.createElement("span");
       count.className = "badge";
-      count.textContent = item.error ? "!" : String(item.files.length);
-      button.append(name, branch, count);
-      button.onclick = () => {
-        selected = item.id;
-        message.value = drafts.get(selected) || "";
-        selection = { file: "", staged: false };
-        diffText = "";
-        remoteInfo = void 0;
-        el("repoPicker").open = false;
-        render();
-        void loadRemoteInfo();
-        void showDiff().catch((e) => notice(String(e), true));
-      };
-      menu.append(button);
-    }
-    if (!snapshot.repos.length) {
+      count.textContent = repo.error ? "!" : String(repo.files.length);
+      if (repo.error) count.title = repo.error;
+      card.append(name, branch, count);
+      card.onclick = () => selectRepository(repo.id, card);
+      return card;
+    });
+    if (!buttons.length) {
       const create = document.createElement("button");
-      create.className = "repo-option repo-create";
-      create.textContent = snapshot.config.root ? t("\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u0439 \u0432 \u044D\u0442\u043E\u0439 \u043F\u0430\u043F\u043A\u0435") : t("\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u043F\u0430\u043F\u043A\u0443\u2026");
+      create.type = "button";
+      create.className = "repo-create";
+      create.textContent = t(hasRoot ? "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u0439 \u0432 \u044D\u0442\u043E\u0439 \u043F\u0430\u043F\u043A\u0435" : "\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u043F\u0430\u043F\u043A\u0443\u2026");
       create.onclick = () => {
-        if (!snapshot?.config.root) {
-          el("repoPicker").open = false;
+        if (!hasRoot) {
           el("root").click();
           return;
         }
-        el("repoPicker").open = false;
         void action(async () => {
           snapshot = await call("init_repository");
-          selected = snapshot.repos[0]?.id || "";
-          message.value = drafts.get(selected) || "";
-          selection = { file: "", staged: false };
-          diffText = "";
+          setActiveRepository(snapshot.repos[0]?.id || "");
           notice(t("Git-\u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u0439 \u0441\u043E\u0437\u0434\u0430\u043D"));
         });
       };
-      menu.append(create);
+      buttons.push(create);
     }
+    strip.replaceChildren(...buttons);
+    strip.scrollLeft = scrollLeft;
+    strip.scrollTop = scrollTop;
+    if (focusedId) buttons.find((card) => card.dataset.repoId === focusedId)?.focus({ preventScroll: true });
   }
+  const cards = Array.from(strip.querySelectorAll(".repo-card"));
+  for (const card of cards) card.setAttribute("aria-pressed", String(card.dataset.repoId === selected));
+  if (displayedRepo !== selected) {
+    displayedRepo = selected;
+    const active = cards.find((card) => card.dataset.repoId === selected);
+    if (active) revealRepository(active, false);
+  }
+}
+function openFileDiff(file3, staged) {
+  const repo = selected;
+  historyView.showChanges();
+  selection = { file: file3, staged };
+  changesSplit.classList.add("show-file-diff");
+  diffText = "";
+  el("diff").replaceChildren();
+  el("diffRuler").replaceChildren();
+  el("diffContext").hidden = true;
+  render();
+  if (narrowChanges.matches) el("backToFiles").focus({ preventScroll: true });
+  else el("files").querySelector(".file.active .file-select")?.focus({ preventScroll: true });
+  void showDiff().catch((error90) => {
+    if (selected === repo && selection.file === file3 && selection.staged === staged) notice(String(error90), true);
+  });
+}
+var collapsedGroups = /* @__PURE__ */ new Map();
+function render() {
+  if (!snapshot)
+    return;
+  const nextRepo = snapshot.repos.some((repo2) => repo2.id === selected) ? selected : snapshot.repos[0]?.id || "";
+  if (nextRepo !== selected) setActiveRepository(nextRepo);
+  const repo = current();
+  historyView.sync(repo?.id || "", repo?.branch || "");
+  el("activeRepoName").textContent = repo?.name || t("\u041D\u0435\u0442 \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u044F");
+  el("activeRepoName").title = repo?.name || "";
+  const branchChip = el("activeRepoBranch");
+  branchChip.hidden = !repo?.branch;
+  el("activeBranchName").textContent = repo?.branch || "";
+  branchChip.title = repo?.branch || "";
+  const navCount = el("navCount");
+  navCount.hidden = !repo?.files.length;
+  navCount.textContent = String(repo?.files.length ?? 0);
+  const fileCount = repo?.files.length ?? 0;
+  el("changesSummary").textContent = repo ? `${fileCount} \xB7 ${t("\u0424\u0430\u0439\u043B\u044B")}` : "";
+  const config3 = snapshot.config;
+  el("generationPreferences").textContent = [config3.model, config3.language, config3.format].filter(Boolean).join(" \xB7 ");
+  renderRepositories(snapshot.repos, !!snapshot.config.root);
   el("rootPath").textContent = snapshot.config.root;
   el("rootPath").title = snapshot.config.root;
   el("branch").textContent = repo ? t(`${repo.upstream || t("Upstream \u043D\u0435 \u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043D")}  \xB7  \u2193 ${repo.incoming}  \u2191 ${repo.outgoing}`) : "";
   el("branch").title = t("\u0421\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u0435 \u0441 \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u043C \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u043C upstream. \u0410\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0439 fetch \u043D\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u044F\u0435\u0442\u0441\u044F.");
   renderRemote();
   const prepared = repo?.files.filter((f2) => !f2.conflict && ![" ", "?"].includes(f2.index)).length || 0;
+  el("generationScope").textContent = t(prepared ? "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F \u043F\u043E \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u043D\u044B\u043C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u043C" : "\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F \u043F\u043E \u0432\u0441\u0435\u043C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F\u043C \u043F\u0440\u0438 \u043F\u0443\u0441\u0442\u043E\u043C staging");
   el("commitHint").textContent = prepared ? t(`\u0412 \u043A\u043E\u043C\u043C\u0438\u0442 ${repo?.name}: ${prepared} \u0444\u0430\u0439\u043B(\u043E\u0432)`) : repo?.files.length ? t("\u0411\u0435\u0437 staging \u0432 Commit \u0432\u043E\u0439\u0434\u0443\u0442 \u0432\u0441\u0435 Changes") : t("\u041D\u0435\u0442 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0439 \u0434\u043B\u044F \u043A\u043E\u043C\u043C\u0438\u0442\u0430");
   const list = el("files");
   const scroll = list.scrollTop;
+  const focusedGroup = list.contains(document.activeElement) ? document.activeElement.dataset.fileGroup : void 0;
+  const stageAll = el("stageAll");
+  const stageAllFocused = document.activeElement === stageAll;
+  document.querySelector(".files-toolbar").append(stageAll);
   list.replaceChildren();
   if (repo?.error)
     notice(repo.error, true);
-  const groups = [[t("\u041A\u043E\u043D\u0444\u043B\u0438\u043A\u0442\u044B"), (f2) => f2.conflict, false], ["Staged Changes", (f2) => !f2.conflict && ![" ", "?"].includes(f2.index), true], ["Changes", (f2) => !f2.conflict && (f2.index === "?" || ![" ", "?"].includes(f2.worktree)), false]];
-  for (const [title, match, staged] of groups) {
+  const groups = [
+    ["conflicts", t("\u041A\u043E\u043D\u0444\u043B\u0438\u043A\u0442\u044B"), (file3) => file3.conflict, false],
+    ["staged", "Staged Changes", (file3) => !file3.conflict && ![" ", "?"].includes(file3.index), true],
+    ["changes", "Changes", (file3) => !file3.conflict && (file3.index === "?" || ![" ", "?"].includes(file3.worktree)), false]
+  ];
+  const repoId = selected;
+  const collapsed = collapsedGroups.get(repoId) || /* @__PURE__ */ new Set();
+  for (const [group, title, match, staged] of groups) {
     const files = repo?.files.filter(match) || [];
-    if (!files.length)
-      continue;
+    if (!files.length) continue;
     const heading = document.createElement("h4");
-    heading.textContent = `${title} \xB7 ${files.length}`;
-    heading.title = staged ? t("\u042D\u0442\u0438 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u0432\u043E\u0439\u0434\u0443\u0442 \u0432 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u043A\u043E\u043C\u043C\u0438\u0442") : title === t("\u041A\u043E\u043D\u0444\u043B\u0438\u043A\u0442\u044B") ? t("\u0421\u043D\u0430\u0447\u0430\u043B\u0430 \u0440\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u0435 \u043A\u043E\u043D\u0444\u043B\u0438\u043A\u0442\u044B \u0432 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440\u0435") : t("\u042D\u0442\u0438 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043A\u0430 \u043D\u0435 \u0432\u043E\u0439\u0434\u0443\u0442 \u0432 \u043A\u043E\u043C\u043C\u0438\u0442");
-    if (staged)
-      heading.append(iconButton(icons.minus, "Unstage All Changes", () => void action(async () => {
+    const body = document.createElement("div");
+    body.id = `file-group-${group}`;
+    body.hidden = collapsed.has(group);
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "file-group-toggle";
+    toggle.dataset.fileGroup = group;
+    toggle.setAttribute("aria-controls", body.id);
+    toggle.setAttribute("aria-expanded", String(!body.hidden));
+    toggle.title = staged ? t("\u042D\u0442\u0438 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u0432\u043E\u0439\u0434\u0443\u0442 \u0432 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u043A\u043E\u043C\u043C\u0438\u0442") : group === "conflicts" ? t("\u0421\u043D\u0430\u0447\u0430\u043B\u0430 \u0440\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u0435 \u043A\u043E\u043D\u0444\u043B\u0438\u043A\u0442\u044B \u0432 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440\u0435") : t("\u042D\u0442\u0438 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043A\u0430 \u043D\u0435 \u0432\u043E\u0439\u0434\u0443\u0442 \u0432 \u043A\u043E\u043C\u043C\u0438\u0442");
+    toggle.innerHTML = icons.disclosure;
+    const label = document.createElement("span");
+    label.textContent = title;
+    const total = document.createElement("span");
+    total.className = "file-group-count";
+    total.textContent = `\xB7 ${files.length}`;
+    toggle.append(label, total);
+    toggle.onclick = () => {
+      body.hidden = !body.hidden;
+      if (body.hidden) collapsed.add(group);
+      else collapsed.delete(group);
+      collapsedGroups.set(repoId, collapsed);
+      toggle.setAttribute("aria-expanded", String(!body.hidden));
+    };
+    heading.append(toggle);
+    if (staged) {
+      const unstageAll = iconButton(icons.minus, t("\u0423\u0431\u0440\u0430\u0442\u044C \u0432\u0441\u0435 \u0438\u0437 staging"), () => void action(async () => {
         await call("unstage", { repo: selected });
         selection.staged = false;
         notice(t("\u0412\u0441\u0435 \u0444\u0430\u0439\u043B\u044B \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0435\u043D\u044B \u0432 Changes"));
-      })));
-    list.append(heading);
+      }));
+      unstageAll.classList.add("file-group-action");
+      heading.append(unstageAll);
+    } else if (group === "changes") {
+      heading.append(stageAll);
+    }
+    list.append(heading, body);
     for (const file3 of files) {
       const row = document.createElement("div");
       row.className = "file" + (selection.file === file3.path && selection.staged === staged ? " active" : "");
-      const name = document.createElement("button");
+      const select = document.createElement("button");
+      select.type = "button";
+      select.className = "file-select";
+      select.setAttribute("aria-pressed", String(row.classList.contains("active")));
+      const name = document.createElement("span");
       name.className = "name";
-      name.title = t(`\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C diff: ${file3.path}`);
+      select.title = t(`\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C diff: ${file3.path}`);
       const basename = document.createElement("span");
       basename.textContent = file3.path.split("/").pop() || file3.path;
       const folder = document.createElement("small");
       folder.textContent = file3.path.includes("/") ? file3.path.slice(0, file3.path.lastIndexOf("/")) : file3.index === "?" ? t("\u041D\u043E\u0432\u044B\u0439 \u0444\u0430\u0439\u043B") : "";
       name.append(basename, folder);
-      name.onclick = () => {
-        selection = { file: file3.path, staged };
-        diffText = "";
-        render();
-        void showDiff().catch((e) => notice(String(e), true));
-      };
+      const status = document.createElement("span");
+      const code = file3.conflict ? "!" : staged ? file3.index : file3.worktree;
+      status.className = "file-status";
+      status.dataset.status = code;
+      status.textContent = code.trim() || "M";
+      status.setAttribute("aria-hidden", "true");
+      select.onclick = () => openFileDiff(file3.path, staged);
       const stats = staged ? file3.stagedStats : file3.unstagedStats;
       const count = document.createElement("span");
       count.className = "file-stats";
@@ -30042,28 +30565,17 @@ function render() {
           selection.staged = !staged;
       }));
       change.disabled = busy || file3.conflict;
-      const open = iconButton(icons.open, staged ? "Open Staged Changes" : "Open File", () => {
-        if (staged) {
-          selection = { file: file3.path, staged: true };
-          diffText = "";
-          render();
-          void showDiff().catch((e) => notice(String(e), true));
-        } else
-          void call("file-path", { repo: selected, file: file3.path }).then((data) => {
-            if (!extensions.files)
-              throw new Error(t("\u041E\u0442\u043A\u0440\u044B\u0442\u0438\u0435 \u0444\u0430\u0439\u043B\u043E\u0432 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u043E \u0432 \u044D\u0442\u043E\u043C \u0440\u0435\u0436\u0438\u043C\u0435 Codex"));
-            return extensions.files.open(data.path);
-          }).catch((e) => notice(String(e), true));
-      });
-      row.append(name, count, open);
+      select.append(status, name, count);
+      row.append(select);
       if (!staged)
         row.append(iconButton(icons.discard, "Discard Changes", () => {
           discardFile = file3.path;
           el("discardFile").textContent = file3.path;
+          el("discardContext").textContent = [repo?.name, repo?.branch].filter(Boolean).join(" \xB7 ");
           el("discardDialog").showModal();
         }));
       row.append(change);
-      list.append(row);
+      body.append(row);
     }
   }
   if (!repo?.files.length) {
@@ -30073,34 +30585,72 @@ function render() {
     list.append(empty);
   }
   list.scrollTop = scroll;
+  if (focusedGroup) list.querySelector(`[data-file-group="${focusedGroup}"]`)?.focus({ preventScroll: true });
+  const stageAllLabel = t("\u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u0432\u0441\u0435");
+  stageAll.title = stageAllLabel;
+  stageAll.setAttribute("aria-label", stageAllLabel);
   controls();
+  if (stageAllFocused) stageAll.focus({ preventScroll: true });
 }
 async function showDiff() {
   const repo = selected, file3 = selection.file, staged = selection.staged, full = fullFile;
-  if (!file3 || !current()?.files.some((f2) => f2.path === file3)) {
+  const entry = current()?.files.find((item) => item.path === file3);
+  const context = el("diffContext");
+  el("openSelectedFile").hidden = !entry || entry.worktree === "D" || entry.index === "D" && entry.worktree === " ";
+  if (!file3 || !entry) {
+    changesSplit.classList.remove("show-file-diff");
+    context.hidden = true;
     el("diff").replaceChildren();
     el("diffRuler").replaceChildren();
     el("filename").textContent = t("\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0444\u0430\u0439\u043B");
     return;
   }
+  el("filename").textContent = file3 + " \xB7 " + t(staged ? "\u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u043E \u043A \u043A\u043E\u043C\u043C\u0438\u0442\u0443" : "\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u0432 \u0444\u0430\u0439\u043B\u0435");
+  el("filename").title = file3;
   const data = await call("diff", { repo, file: file3, staged, full });
   if (full !== fullFile || repo !== selected || file3 !== selection.file || staged !== selection.staged)
     return;
-  if (data.diff === diffText)
+  context.hidden = false;
+  context.textContent = t(staged ? "\u0418\u043D\u0434\u0435\u043A\u0441 \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0433\u043E \u043A\u043E\u043C\u043C\u0438\u0442\u0430" : "\u0420\u0430\u0431\u043E\u0447\u0430\u044F \u043A\u043E\u043F\u0438\u044F \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0438\u043D\u0434\u0435\u043A\u0441\u0430");
+  if (data.diff && data.diff === diffText)
     return;
   diffText = data.diff;
   const view = el("diff"), scroll = view.scrollTop, left = view.scrollLeft;
-  el("filename").textContent = t(`${file3} \xB7 ${staged ? t("\u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u043E \u043A \u043A\u043E\u043C\u043C\u0438\u0442\u0443") : t("\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u0432 \u0444\u0430\u0439\u043B\u0435")}`);
-  view.replaceChildren();
-  for (const line of (data.diff || t("\u041D\u0435\u0442 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u044B\u0445 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0439")).split("\n")) {
-    const span = document.createElement("span");
-    span.className = "line " + (line.startsWith("+") ? "add" : line.startsWith("-") ? "del" : line.startsWith("@@") ? "hunk" : "");
-    span.textContent = line || " ";
-    view.append(span);
-  }
+  renderDiff(view, data.diff, entry.index === "?");
   view.scrollTop = scroll;
   view.scrollLeft = left;
   updateRuler();
+}
+function renderDiff(view, diff, untracked = false) {
+  view.replaceChildren();
+  const rows = document.createDocumentFragment();
+  const lines = (diff || t("\u041D\u0435\u0442 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u044B\u0445 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u0439")).split("\n");
+  if (lines.length > 1 && lines[lines.length - 1] === "") lines.pop();
+  let oldLine = 0, newLine = 1, insideHunk = untracked && diff.startsWith("+");
+  for (const line of lines) {
+    const row = document.createElement("span");
+    row.className = "line";
+    const hunk = /^@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/.exec(line);
+    if (hunk) {
+      oldLine = Number(hunk[1]);
+      newLine = Number(hunk[2]);
+      insideHunk = true;
+      row.classList.add("hunk");
+    } else if (insideHunk && /^[ +\-]/.test(line)) {
+      const marker = line[0];
+      if (marker !== "+") row.dataset.old = String(oldLine++);
+      if (marker !== "-") row.dataset.new = String(newLine++);
+      if (marker === "+") row.classList.add("add");
+      if (marker === "-") row.classList.add("del");
+      row.classList.add("diff-source");
+    } else {
+      if (line.startsWith("diff --git ") || line.startsWith("@@")) insideHunk = false;
+      row.classList.add("diff-meta");
+    }
+    row.textContent = line || " ";
+    rows.append(row);
+  }
+  view.append(rows);
 }
 async function refresh() {
   if (refreshing)
@@ -30134,13 +30684,17 @@ async function saveDraft(repo = selected, text = message.value) {
   }
 }
 message.oninput = () => {
-  controls();
-  drafts.set(selected, message.value);
-  clearTimeout(draftTimer);
   const repo = selected, text = message.value;
-  draftTimer = setTimeout(() => {
-    void saveDraft(repo, text).catch((e) => notice(String(e), true));
-  }, 300);
+  if (!repo) return;
+  controls();
+  drafts.set(repo, text);
+  clearTimeout(draftTimers.get(repo));
+  draftTimers.set(repo, setTimeout(() => {
+    draftTimers.delete(repo);
+    void saveDraft(repo, text).catch((error90) => {
+      if (selected === repo) notice(String(error90), true);
+    });
+  }, 300));
 };
 for (const [id, full] of [["changesOnly", false], ["fullFile", true]])
   el(id).onclick = () => {
@@ -30150,22 +30704,13 @@ for (const [id, full] of [["changesOnly", false], ["fullFile", true]])
     el("fullFile").setAttribute("aria-pressed", String(full));
     void showDiff().catch((e) => notice(String(e), true));
   };
-document.addEventListener("pointerdown", (event) => {
-  for (const id of ["repoPicker", "commitMenu"]) {
-    const menu = el(id);
-    if (event.target instanceof Node && !menu.contains(event.target))
-      menu.open = false;
-  }
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape")
-    for (const id of ["repoPicker", "commitMenu"])
-      el(id).open = false;
-});
-el("refresh").onclick = () => void refresh();
+el("refresh").onclick = () => {
+  void refresh();
+  historyView.reload();
+};
 el("root").onclick = () => void action(async () => {
   snapshot = await call("choose_root");
-  selected = "";
+  setActiveRepository("");
   render();
   message.value = drafts.get(selected) || "";
   notice(t("\u041F\u0430\u043F\u043A\u0430 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0430"));
@@ -30190,8 +30735,6 @@ el("remoteConfirm").onclick = () => {
   });
 };
 el("stageAll").innerHTML = icons.plus;
-el("stageAll").title = "Stage All Changes";
-el("stageAll").setAttribute("aria-label", "Stage All Changes");
 el("stageAll").onclick = () => void action(async () => {
   await call("stage", { repo: selected });
   notice(t("\u0412\u0441\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u044B"));
@@ -30229,8 +30772,8 @@ async function pollJob() {
       if (selected === generationRepo)
         message.value = job.message;
       await saveDraft(generationRepo, job.message);
-      notice(t("\u0421\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435 \u0433\u043E\u0442\u043E\u0432\u043E. \u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u0435\u0433\u043E \u043F\u0435\u0440\u0435\u0434 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u043C."));
-    } else
+      if (selected === generationRepo) notice(t("\u0421\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435 \u0433\u043E\u0442\u043E\u0432\u043E. \u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u0435\u0433\u043E \u043F\u0435\u0440\u0435\u0434 \u043A\u043E\u043C\u043C\u0438\u0442\u043E\u043C."));
+    } else if (selected === generationRepo)
       notice(job.error || t("\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F \u043E\u0442\u043C\u0435\u043D\u0435\u043D\u0430"), job.state === "error");
     controls();
   } catch (error90) {
@@ -30415,6 +30958,10 @@ app.ontoolresult = (result) => {
     void loadRemoteInfo();
   }
 };
+el("changesIcon").innerHTML = icons.changes;
+el("historyIcon").innerHTML = icons.history;
+el("activeBranchIcon").innerHTML = icons.branch;
+el("codexTitleIcon").innerHTML = icons.sparkle;
 initI18n();
 setUiLanguage();
 await app.connect();
@@ -30463,6 +31010,7 @@ function updateRuler() {
       };
       ruler.append(mark);
     }
+  if (view.scrollHeight <= view.clientHeight) return;
   const viewport = document.createElement("span");
   viewport.className = "ruler-viewport";
   viewport.style.top = `${view.scrollTop / Math.max(1, view.scrollHeight) * 100}%`;

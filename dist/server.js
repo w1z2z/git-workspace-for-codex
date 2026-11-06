@@ -19009,6 +19009,70 @@ var init_git = __esm({
       async git(id, args) {
         return run("git", ["--no-pager", "--literal-pathspecs", ...args], await this.cwd(id));
       }
+      async history(id, branch, limit, all = false) {
+        const [headRef, refOutput] = await Promise.all([
+          this.git(id, ["symbolic-ref", "--quiet", "HEAD"]).then((output) => output.trim(), () => ""),
+          this.git(id, ["for-each-ref", "--format=%(refname)%00%(objectname)%00%(symref)", "refs/heads", "refs/remotes"])
+        ]);
+        const refs = [];
+        const branches = /* @__PURE__ */ new Map();
+        for (const row of refOutput.trimEnd().split("\n")) {
+          const [ref, hash2, symbolic] = row.split("\0");
+          if (!hash2 || symbolic) continue;
+          const remote = ref.startsWith("refs/remotes/");
+          const name = ref.slice((remote ? "refs/remotes/" : "refs/heads/").length);
+          refs.push({ name, hash: hash2, remote });
+          if (!remote) branches.set(name, hash2);
+        }
+        const currentBranch = headRef.slice("refs/heads/".length);
+        if (currentBranch && !branches.has(currentBranch)) branches.set(currentBranch, "");
+        const selectedBranch = branch !== void 0 && (branches.has(branch) || !branch && !currentBranch) ? branch : currentBranch;
+        const tip = selectedBranch ? branches.get(selectedBranch) : (await this.git(id, ["rev-parse", "--verify", "HEAD"]).catch(() => "")).trim();
+        const commits = [];
+        if (all || tip) {
+          const raw = await this.git(id, [
+            "-c",
+            "log.graphColors=blue,magenta,yellow,cyan,green,red",
+            "log",
+            "--graph",
+            "--topo-order",
+            "--color=always",
+            "--no-show-signature",
+            "--no-notes",
+            "--no-decorate",
+            "--no-patch",
+            "--format=%x00%H%x00%s%x00%an%x00%aI",
+            "-n",
+            String(limit + 1),
+            ...all ? ["--all"] : [tip],
+            "--"
+          ]);
+          let graph = [];
+          for (const line of raw.trimEnd().split("\n")) {
+            if (!line) continue;
+            const [prefix, hash2, subject, author, date13] = line.split("\0");
+            graph.push(prefix);
+            if (!hash2) continue;
+            commits.push({ hash: hash2, graph, subject, author, date: date13 });
+            graph = [];
+          }
+        }
+        return { branches: [...branches.keys()], currentBranch, branch: selectedBranch, refs, commits: commits.slice(0, limit), more: commits.length > limit };
+      }
+      async commitChanges(id, hash2, file3) {
+        if (!/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(hash2)) throw new Error("\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 SHA \u043A\u043E\u043C\u043C\u0438\u0442\u0430");
+        const ancestry = (await this.git(id, ["rev-list", "--parents", "-n", "1", hash2, "--"])).trim().split(" ");
+        if (ancestry[0] !== hash2) throw new Error("\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 SHA \u043A\u043E\u043C\u043C\u0438\u0442\u0430");
+        const [, parent] = ancestry;
+        const command = parent ? ["diff", parent, hash2] : ["diff-tree", "--root", "--no-commit-id", "-r", hash2];
+        const options = ["--no-renames", "--no-ext-diff", "--no-textconv"];
+        if (file3 !== void 0) {
+          const diff = await this.git(id, [...command, ...options, "--no-color", "--patch", "--", file3]);
+          return { diff };
+        }
+        const names = await this.git(id, [...command, ...options, "--name-only", "-z", "--"]);
+        return { files: names.split("\0").filter(Boolean) };
+      }
       async hash(id) {
         return createHash("sha256").update(await this.git(id, ["diff", "--cached", "--binary", "--no-ext-diff", "--no-textconv"])).digest("hex");
       }
@@ -52811,16 +52875,16 @@ import { readFile as readFile2 } from "node:fs/promises";
 var workspace = new Workspace(process.env.GIT_WORKSPACE_STATE_DIR);
 await workspace.init();
 var icons = [{ src: "data:image/svg+xml;base64," + (await readFile2(new URL("../assets/icon.svg", import.meta.url))).toString("base64"), mimeType: "image/svg+xml", sizes: ["64x64"] }];
-var server = new McpServer({ name: "Git Workspace", version: "1.5.3", icons });
+var server = new McpServer({ name: "Git Workspace", version: "1.7.11", icons });
 new OpenAIExtensions(server);
-var uri2 = "ui://git-workspace/1.5.3/panel.html";
+var uri2 = "ui://git-workspace/1.7.11/panel.html";
 var result = (value) => ({ content: [], structuredContent: value });
 N3(server, "Git Workspace", uri2, {}, async () => ({ contents: [{ uri: uri2, mimeType: p, text: await readFile2(new URL("./panel.html", import.meta.url), "utf8"), _meta: { "openai/ui": { preferredDisplayMode: "fullscreen", availableDisplayModes: ["inline", "fullscreen"] }, ui: { csp: { connectDomains: [], resourceDomains: [] } } } }] }));
 for (const [name, type] of [["git_workspace_open", "global"], ["git_workspace_panel", "thread"]]) K3(server, name, { title: "Git Workspace", description: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C Source Control \u0434\u043B\u044F \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0451\u043D\u043D\u044B\u0445 \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0445 \u0440\u0435\u043F\u043E\u0437\u0438\u0442\u043E\u0440\u0438\u0435\u0432.", inputSchema: {}, annotations: { readOnlyHint: true, openWorldHint: false }, _meta: { ui: { resourceUri: uri2 }, "openai/ui": { entrypoints: [{ type }] } } }, async () => result(await workspace.snapshot()));
 server.registerTool("git_workspace_action", {
   title: "Git Workspace action",
   description: "\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u044F \u043F\u0430\u043D\u0435\u043B\u0438 Git Workspace. \u0418\u0437\u043C\u0435\u043D\u044F\u044E\u0449\u0438\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044F \u0432\u044B\u043F\u043E\u043B\u043D\u044F\u044E\u0442\u0441\u044F \u0442\u043E\u043B\u044C\u043A\u043E \u043F\u043E \u044F\u0432\u043D\u043E\u043C\u0443 \u0432\u044B\u0431\u043E\u0440\u0443 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F.",
-  inputSchema: { action: external_exports.enum(["refresh", "diff", "file", "file-path", "stage", "unstage", "discard", "draft", "settings", "generate", "job", "cancel", "commit", "direction", "push", "init_repository", "add_origin", "choose_root"]), repo: external_exports.string().optional(), file: external_exports.string().optional(), staged: external_exports.boolean().optional(), full: external_exports.boolean().optional(), message: external_exports.string().optional(), hash: external_exports.string().optional(), job: external_exports.string().optional(), root: external_exports.string().optional(), language: external_exports.string().max(80).optional(), format: external_exports.string().max(120).optional(), uiLanguage: external_exports.enum(["en", "ru"]).optional(), model: external_exports.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$/).optional(), remote: external_exports.string().optional(), branch: external_exports.string().optional(), expectedBranch: external_exports.string().optional(), url: external_exports.string().max(2048).optional() },
+  inputSchema: { action: external_exports.enum(["refresh", "history", "history-files", "history-diff", "diff", "file", "file-path", "stage", "unstage", "discard", "draft", "settings", "generate", "job", "cancel", "commit", "direction", "push", "init_repository", "add_origin", "choose_root"]), repo: external_exports.string().optional(), file: external_exports.string().optional(), staged: external_exports.boolean().optional(), full: external_exports.boolean().optional(), message: external_exports.string().optional(), hash: external_exports.string().optional(), job: external_exports.string().optional(), root: external_exports.string().optional(), language: external_exports.string().max(80).optional(), format: external_exports.string().max(120).optional(), uiLanguage: external_exports.enum(["en", "ru"]).optional(), model: external_exports.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$/).optional(), remote: external_exports.string().optional(), branch: external_exports.string().optional(), historyAll: external_exports.boolean().optional(), historyLimit: external_exports.number().int().min(1).max(2e3).optional(), expectedBranch: external_exports.string().optional(), url: external_exports.string().max(2048).optional() },
   _meta: { ui: { visibility: ["app"] } },
   annotations: { readOnlyHint: false, destructiveHint: true, openWorldHint: true }
 }, async (args) => {
@@ -52828,6 +52892,16 @@ server.registerTool("git_workspace_action", {
     const id = args.repo || "";
     let payload = {};
     switch (args.action) {
+      case "history":
+        payload = await workspace.history(id, args.branch, args.historyLimit ?? 100, args.historyAll);
+        break;
+      case "history-files":
+        payload = await workspace.commitChanges(id, args.hash || "");
+        break;
+      case "history-diff":
+        if (!args.file) throw new Error("\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0444\u0430\u0439\u043B");
+        payload = await workspace.commitChanges(id, args.hash || "", args.file);
+        break;
       case "refresh":
         payload = await workspace.snapshot();
         break;

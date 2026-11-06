@@ -23,6 +23,9 @@ export async function run(command: string, args: string[], cwd: string, input?: 
 export type LineStats = { added: number | null; deleted: number | null };
 export type FileChange = { path: string; original?: string; index: string; worktree: string; conflict: boolean; stagedStats?: LineStats; unstagedStats?: LineStats };
 export type Repo = { id: string; name: string; branch: string; upstream: string; incoming: number; outgoing: number; files: FileChange[]; stagedHash: string; changesHash?: string; error?: string };
+export type HistoryRef = { name: string; hash: string; remote: boolean };
+export type HistoryCommit = { hash: string; graph: string[]; subject: string; author: string; date: string };
+export type History = { branches: string[]; currentBranch: string; branch: string; refs: HistoryRef[]; commits: HistoryCommit[]; more: boolean };
 type Config = { root: string; language: string; format: string; model: string; uiLanguage: 'en' | 'ru'; drafts: Record<string, string>; generatedHashes: Record<string, string> };
 type Job = { id: string; repo: string; hash: string; language: string; format: string; model: string; state: 'running' | 'done' | 'error' | 'cancelled'; message?: string; error?: string; controller: AbortController };
 export class Workspace {
@@ -55,6 +58,59 @@ export class Workspace {
   }
   async cwd(id: string) { const dir = this.repos.get(id); if (!dir) throw new Error('Репозиторий не подключён'); if (await realpath(dir) !== dir || (await realpath((await run('git', ['rev-parse', '--show-toplevel'], dir)).trim())) !== dir) throw new Error('Путь репозитория изменился. Подключите папку заново.'); return dir; }
   async git(id: string, args: string[]) { return run('git', ['--no-pager', '--literal-pathspecs', ...args], await this.cwd(id)); }
+  async history(id: string, branch: string | undefined, limit: number, all = false): Promise<History> {
+    const [headRef, refOutput] = await Promise.all([
+      this.git(id, ['symbolic-ref', '--quiet', 'HEAD']).then(output => output.trim(), () => ''),
+      this.git(id, ['for-each-ref', '--format=%(refname)%00%(objectname)%00%(symref)', 'refs/heads', 'refs/remotes']),
+    ]);
+    const refs: HistoryRef[] = [];
+    const branches = new Map<string, string>();
+    for (const row of refOutput.trimEnd().split('\n')) {
+      const [ref, hash, symbolic] = row.split('\0');
+      if (!hash || symbolic) continue;
+      const remote = ref.startsWith('refs/remotes/');
+      const name = ref.slice((remote ? 'refs/remotes/' : 'refs/heads/').length);
+      refs.push({ name, hash, remote });
+      if (!remote) branches.set(name, hash);
+    }
+    const currentBranch = headRef.slice('refs/heads/'.length);
+    if (currentBranch && !branches.has(currentBranch)) branches.set(currentBranch, '');
+    const selectedBranch = branch !== undefined && (branches.has(branch) || (!branch && !currentBranch)) ? branch : currentBranch;
+    const tip = selectedBranch ? branches.get(selectedBranch) : (await this.git(id, ['rev-parse', '--verify', 'HEAD']).catch(() => '')).trim();
+    const commits: HistoryCommit[] = [];
+    if (all || tip) {
+      const raw = await this.git(id, [
+        '-c', 'log.graphColors=blue,magenta,yellow,cyan,green,red',
+        'log', '--graph', '--topo-order', '--color=always', '--no-show-signature',
+        '--no-notes', '--no-decorate', '--no-patch', '--format=%x00%H%x00%s%x00%an%x00%aI',
+        '-n', String(limit + 1), ...(all ? ['--all'] : [tip!]), '--',
+      ]);
+      let graph: string[] = [];
+      for (const line of raw.trimEnd().split('\n')) {
+        if (!line) continue;
+        const [prefix, hash, subject, author, date] = line.split('\0');
+        graph.push(prefix);
+        if (!hash) continue;
+        commits.push({ hash, graph, subject, author, date });
+        graph = [];
+      }
+    }
+    return { branches: [...branches.keys()], currentBranch, branch: selectedBranch, refs, commits: commits.slice(0, limit), more: commits.length > limit };
+  }
+  async commitChanges(id: string, hash: string, file?: string) {
+    if (!/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(hash)) throw new Error('Неверный SHA коммита');
+    const ancestry = (await this.git(id, ['rev-list', '--parents', '-n', '1', hash, '--'])).trim().split(' ');
+    if (ancestry[0] !== hash) throw new Error('Неверный SHA коммита');
+    const [, parent] = ancestry;
+    const command = parent ? ['diff', parent, hash] : ['diff-tree', '--root', '--no-commit-id', '-r', hash];
+    const options = ['--no-renames', '--no-ext-diff', '--no-textconv'];
+    if (file !== undefined) {
+      const diff = await this.git(id, [...command, ...options, '--no-color', '--patch', '--', file]);
+      return { diff };
+    }
+    const names = await this.git(id, [...command, ...options, '--name-only', '-z', '--']);
+    return { files: names.split('\0').filter(Boolean) };
+  }
   async hash(id: string) { return createHash('sha256').update(await this.git(id, ['diff', '--cached', '--binary', '--no-ext-diff', '--no-textconv'])).digest('hex'); }
   async commitDiff(id: string) {
     const staged = await this.git(id, ['diff', '--cached', '--binary', '--no-ext-diff', '--no-textconv']);

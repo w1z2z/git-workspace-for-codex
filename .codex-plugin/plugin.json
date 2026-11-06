@@ -1,6 +1,6 @@
 {
   "name": "git-workspace",
-  "version": "1.5.3",
+  "version": "1.7.11",
   "description": "Управление локальными Git-репозиториями в Codex: просмотр изменений, staging, генерация сообщений коммитов, Commit и Push.",
   "author": {
     "name": "w1z2z"

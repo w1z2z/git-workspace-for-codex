@@ -3,6 +3,7 @@ import { App, applyDocumentTheme, applyHostStyleVariables } from '@modelcontextp
 import { OpenAIExtensions } from '@openai/mcp-extensions/app';
 import '@openai/mcp-extensions/app/styles.css';
 import './style.css';
+import { mountHistory } from './history.js';
 import type { Repo } from './git.js';
 type Snapshot = {
     repos: Repo[];
@@ -27,17 +28,17 @@ type Direction = {
     remotes: string[];
     url: string;
 };
-const app = new App({ name: 'Git Workspace', version: '1.5.3' });
+const app = new App({ name: 'Git Workspace', version: '1.7.11' });
 const extensions = new OpenAIExtensions(app);
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const buttonIds = ['stageAll', 'commit', 'commitPush', 'push', 'generate'];
 let snapshot: Snapshot | undefined, selected = '', busy = false, refreshing = false, selection = { file: '', staged: false }, diffText = '', jobId = '', generationRepo = '';
 const drafts = new Map<string, string>(), generated = new Map<string, string>();
-let fullFile = false, repoMenuSignature = '', remoteInfo: Direction | undefined, remoteInfoRepo = '';
+let fullFile = false, repoCardsSignature = '', displayedRepo = '', remoteInfo: Direction | undefined, remoteInfoRepo = '';
 const pendingPush = new Set<string>();
 let operation = '';
 const mainIsPush = () => !!current() && !current()!.files.length && (pendingPush.has(selected) || current()!.outgoing > 0);
-let draftTimer: ReturnType<typeof setTimeout> | undefined;
+const draftTimers = new Map<string, ReturnType<typeof setTimeout>>();
 const message = el<HTMLTextAreaElement>('message');
 const notice = (text: string, error = false) => { el('notice').textContent = t(text); el('notice').className = error ? 'error' : ''; };
 async function call<T extends object = Record<string, unknown>>(action: string, args: object = {}): Promise<T> { const response = await app.callServerTool({ name: 'git_workspace_action', arguments: { action, ...args } }); const data = response.structuredContent as ({
@@ -45,6 +46,58 @@ async function call<T extends object = Record<string, unknown>>(action: string, 
     error?: string;
 } & T) | undefined; if (!data?.ok)
     throw new Error(data?.error || t('Сервер не вернул результат')); return data; }
+const changesSplit = el('changesSplit');
+const changesDivider = el('changesDivider');
+const narrowChanges = matchMedia('(max-width: 820px)');
+const historyView = mountHistory(
+    (repo, branch, historyLimit, historyAll) => call('history', { repo, branch, historyLimit, historyAll }),
+    (repo, hash) => call('history-files', { repo, hash }),
+    (repo, hash, file) => call('history-diff', { repo, hash, file }),
+    renderDiff,
+);
+function resizeFiles(percent: number) {
+    const width = Math.round(Math.min(62, Math.max(25, percent)));
+    changesSplit.style.setProperty('--files-width', width + '%');
+    changesDivider.setAttribute('aria-valuenow', String(width));
+}
+changesDivider.setAttribute('aria-valuemin', '25');
+changesDivider.setAttribute('aria-valuemax', '62');
+resizeFiles(36);
+let dragOffset = 0;
+changesDivider.onpointerdown = event => {
+    if (event.button !== 0) return;
+    event.preventDefault();
+    changesDivider.blur();
+    dragOffset = event.clientX - changesDivider.getBoundingClientRect().left;
+    changesDivider.setPointerCapture(event.pointerId);
+    changesDivider.classList.add('dragging');
+};
+changesDivider.onlostpointercapture = () => changesDivider.classList.remove('dragging');
+changesDivider.onpointermove = event => {
+    if (!changesDivider.hasPointerCapture(event.pointerId)) return;
+    const { left, width } = changesSplit.getBoundingClientRect();
+    if (width) resizeFiles((event.clientX - left - dragOffset) / width * 100);
+};
+changesDivider.onkeydown = event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    resizeFiles(Number(changesDivider.getAttribute('aria-valuenow')) + (event.key === 'ArrowLeft' ? -3 : 3));
+};
+el('backToFiles').onclick = () => {
+    changesSplit.classList.remove('show-file-diff');
+    el('files').querySelector<HTMLButtonElement>('.file.active .file-select')?.focus();
+};
+el('openSelectedFile').onclick = async () => {
+    const { file } = selection;
+    const repo = selected;
+    try {
+        if (!extensions.files) throw new Error(t('Открытие файлов недоступно в этом режиме Codex'));
+        const { path } = await call<{ path: string }>('file-path', { repo, file });
+        if (repo === selected && file === selection.file && !changesSplit.hidden) await extensions.files.open(path);
+    } catch (error) {
+        if (repo === selected && file === selection.file) notice(String(error), true);
+    }
+};
 const current = () => snapshot?.repos.find(r => r.id === selected);
 function renderRemote() {
     const repo = current(), status = el('remoteStatus'), button = el<HTMLButtonElement>('connectRemote');
@@ -82,9 +135,10 @@ function controls() {
     const repo = current(), changes = !!repo?.files.length, invalid = !repo || !!repo.error;
     for (const id of buttonIds)
         el<HTMLButtonElement>(id).disabled = busy || invalid || (id === 'generate' && !!jobId) || (id === 'stageAll' && !changes) || (id === 'commitPush' && !changes);
+    el('push').hidden = !repo || mainIsPush();
     el<HTMLButtonElement>('commit').disabled = busy || invalid || (!mainIsPush() && !changes);
     el('commit').innerHTML = t(`<span>${mainIsPush() ? 'Push' : 'Commit'}</span>${operation ? t('<span class="spinner" aria-label="Выполняется"></span>') : ''}`);
-    for (const button of Array.from(el('repos').querySelectorAll('button')))
+    for (const button of Array.from(el('repoCards').querySelectorAll('button')))
         button.disabled = busy;
     el<HTMLButtonElement>('root').disabled = busy || !!jobId;
     message.disabled = busy;
@@ -92,7 +146,11 @@ function controls() {
     el('operationLoader').hidden = true;
     el<HTMLButtonElement>('remoteConfirm').disabled = busy;
     renderRemote();
-    el('generate').innerHTML = jobId ? '<span class="spinner"></span>' : icons.sparkle;
+    const generating = jobId && generationRepo === selected;
+    el('generate').innerHTML = generating ? '<span class="spinner" aria-hidden="true"></span>' : icons.sparkle;
+    const generateLabel = document.createElement('span');
+    generateLabel.textContent = t(generating ? 'Генерация…' : 'Сгенерировать сообщение');
+    el('generate').append(generateLabel);
     el('generate').setAttribute('aria-label', t('Сгенерировать сообщение'));
     el('generate').title = t(`Сгенерировать сообщение · ${snapshot?.config.model || 'gpt-6-luna'}`);
     el('stale').textContent = generated.has(selected) && generated.get(selected) !== (repo?.changesHash || repo?.stagedHash) ? t('Изменения обновились — проверьте сообщение') : '';
@@ -100,7 +158,6 @@ function controls() {
 async function action(task: () => Promise<void>, label = '') {
     if (busy)
         return;
-    el<HTMLDetailsElement>('commitMenu').open = false;
     busy = true;
     operation = label;
     controls();
@@ -115,14 +172,18 @@ async function action(task: () => Promise<void>, label = '') {
         busy = false;
         operation = '';
         render();
+        if (label === 'commit' || label === 'push') historyView.reload();
     }
 }
 const svg = (body: string) => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
 const icons = {
+    changes: svg('<rect x="8" y="3" width="12" height="14" rx="2"/><path d="M16 21H6a2 2 0 0 1-2-2V9"/>'),
+    history: svg('<path d="M3.5 9a9 9 0 1 1 2.1 9.4M3.5 4.5V9H8M12 7v5l3 2"/>'),
+    branch: svg('<path d="M6 8v8m3 3h3a6 6 0 0 0 6-6V8"/><circle cx="6" cy="5" r="3"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/>'),
+    disclosure: svg('<path d="m6 9 6 6 6-6"/>'),
     plus: svg('<path d="M12 5v14M5 12h14"/>'), minus: svg('<path d="M5 12h14"/>'),
     discard: svg('<path d="M4 10h10a6 6 0 1 1-5.5 8M4 10l5-5M4 10l5 5"/>'),
-    open: svg('<path d="M14 3h7v7M21 3l-9 9M10 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/>'),
-    sparkle: svg('<path d="m10 2 2.3 6.7L19 11l-6.7 2.3L10 20l-2.3-6.7L1 11l6.7-2.3L10 2zM19 15l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/>'),
+    sparkle: svg('<path d="M10 2.5c.8 4.1 2.4 5.7 6.5 6.5-4.1.8-5.7 2.4-6.5 6.5-.8-4.1-2.4-5.7-6.5-6.5 4.1-.8 5.7-2.4 6.5-6.5ZM18.5 12.5c.4 2.5 1.5 3.6 4 4-2.5.4-3.6 1.5-4 4-.4-2.5-1.5-3.6-4-4 2.5-.4 3.6-1.5 4-4ZM5 16v5m-2.5-2.5h5"/>'),
 };
 function iconButton(icon: string, label: string, handler: () => void) {
     const button = document.createElement('button');
@@ -134,80 +195,235 @@ function iconButton(icon: string, label: string, handler: () => void) {
     button.onclick = handler;
     return button;
 }
+function setActiveRepository(id: string) {
+    selected = id;
+    message.value = drafts.get(id) || '';
+    selection = { file: '', staged: false };
+    changesSplit.classList.remove('show-file-diff');
+    el('openSelectedFile').hidden = true;
+    diffText = '';
+    remoteInfo = undefined;
+    notice('');
+    el('diff').replaceChildren();
+    el('diffRuler').replaceChildren();
+    el('filename').textContent = t('Выберите файл');
+    el('diffContext').hidden = true;
+}
+const topNavigation = matchMedia('(max-width: 660px)');
+function revealRepository(card: HTMLButtonElement, smooth: boolean) {
+    const strip = el('repoCards');
+    const viewport = strip.getBoundingClientRect();
+    const item = card.getBoundingClientRect();
+    strip.scrollTo({
+        ...(topNavigation.matches
+            ? { left: strip.scrollLeft + (item.left + item.width / 2) - (viewport.left + viewport.width / 2) }
+            : { top: strip.scrollTop + (item.top + item.height / 2) - (viewport.top + viewport.height / 2) }),
+        behavior: smooth && !matchMedia('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'instant',
+    });
+}
+topNavigation.addEventListener('change', () => {
+    const active = el('repoCards').querySelector<HTMLButtonElement>('[aria-pressed="true"]');
+    if (active) revealRepository(active, false);
+});
+function selectRepository(id: string, card: HTMLButtonElement) {
+    if (busy) return;
+    if (id !== selected) {
+        setActiveRepository(id);
+        displayedRepo = id;
+        render();
+        void loadRemoteInfo();
+    }
+    revealRepository(card, true);
+}
+function renderRepositories(repos: Repo[], hasRoot: boolean) {
+    const strip = el('repoCards');
+    const signature = JSON.stringify([hasRoot, document.documentElement.lang, repos.map(repo => [
+        repo.id, repo.name, repo.branch, repo.files.length, repo.error,
+    ])]);
+    if (signature !== repoCardsSignature) {
+        repoCardsSignature = signature;
+        const { scrollLeft, scrollTop } = strip;
+        const focusedId = strip.contains(document.activeElement) ?
+            (document.activeElement as HTMLElement).dataset.repoId : undefined;
+        const buttons = repos.map(repo => {
+            const card = document.createElement('button');
+            card.type = 'button';
+            card.className = 'repo-card';
+            card.dataset.repoId = repo.id;
+            card.title = [repo.name, repo.branch].filter(Boolean).join(' · ');
+            const name = document.createElement('strong');
+            name.textContent = repo.name;
+            const branch = document.createElement('span');
+            branch.className = 'repo-card-branch';
+            branch.innerHTML = icons.branch;
+            const branchName = document.createElement('span');
+            branchName.textContent = repo.branch || t('Нет ветки');
+            branch.append(branchName);
+            const count = document.createElement('span');
+            count.className = 'badge';
+            count.textContent = repo.error ? '!' : String(repo.files.length);
+            if (repo.error) count.title = repo.error;
+            card.append(name, branch, count);
+            card.onclick = () => selectRepository(repo.id, card);
+            return card;
+        });
+        if (!buttons.length) {
+            const create = document.createElement('button');
+            create.type = 'button';
+            create.className = 'repo-create';
+            create.textContent = t(hasRoot ? 'Создать репозиторий в этой папке' : 'Выбрать папку…');
+            create.onclick = () => {
+                if (!hasRoot) {
+                    el('root').click();
+                    return;
+                }
+                void action(async () => {
+                    snapshot = await call<Snapshot>('init_repository');
+                    setActiveRepository(snapshot.repos[0]?.id || '');
+                    notice(t('Git-репозиторий создан'));
+                });
+            };
+            buttons.push(create);
+        }
+        strip.replaceChildren(...buttons);
+        strip.scrollLeft = scrollLeft;
+        strip.scrollTop = scrollTop;
+        if (focusedId) buttons.find(card => card.dataset.repoId === focusedId)?.focus({ preventScroll: true });
+    }
+    const cards = Array.from(strip.querySelectorAll<HTMLButtonElement>('.repo-card'));
+    for (const card of cards) card.setAttribute('aria-pressed', String(card.dataset.repoId === selected));
+    if (displayedRepo !== selected) {
+        displayedRepo = selected;
+        const active = cards.find(card => card.dataset.repoId === selected);
+        if (active) revealRepository(active, false);
+    }
+}
+function openFileDiff(file: string, staged: boolean) {
+    const repo = selected;
+    historyView.showChanges();
+    selection = { file, staged };
+    changesSplit.classList.add('show-file-diff');
+    diffText = '';
+    el('diff').replaceChildren();
+    el('diffRuler').replaceChildren();
+    el('diffContext').hidden = true;
+    render();
+    if (narrowChanges.matches) el('backToFiles').focus({ preventScroll: true });
+    else el('files').querySelector<HTMLButtonElement>('.file.active .file-select')?.focus({ preventScroll: true });
+    void showDiff().catch(error => {
+        if (selected === repo && selection.file === file && selection.staged === staged) notice(String(error), true);
+    });
+}
+const collapsedGroups = new Map<string, Set<string>>();
 function render() {
     if (!snapshot)
         return;
-    if (!snapshot.repos.some(r => r.id === selected))
-        selected = snapshot.repos[0]?.id || '';
+    const nextRepo = snapshot.repos.some(repo => repo.id === selected) ? selected : snapshot.repos[0]?.id || '';
+    if (nextRepo !== selected) setActiveRepository(nextRepo);
     const repo = current();
-    el('repoLabel').textContent = repo ? `${repo.name} · ${repo.branch}` : snapshot.repos.length ? t('Выберите репозиторий') : t('Нет репозитория');
-    const signature = JSON.stringify([selected, busy, snapshot.repos.map(r => [r.id, r.name, r.branch, r.files.length, r.error])]);
-    if (signature !== repoMenuSignature) {
-        repoMenuSignature = signature;
-        const menu = el('repos');
-        menu.replaceChildren();
-        for (const item of snapshot.repos) {
-            const button = document.createElement('button');
-            button.className = 'repo-option';
-            button.setAttribute('aria-pressed', String(item.id === selected));
-            const name = document.createElement('strong');
-            name.textContent = item.name;
-            const branch = document.createElement('span');
-            branch.textContent = item.branch;
-            const count = document.createElement('span');
-            count.className = 'badge';
-            count.textContent = item.error ? '!' : String(item.files.length);
-            button.append(name, branch, count);
-            button.onclick = () => { selected = item.id; message.value = drafts.get(selected) || ''; selection = { file: '', staged: false }; diffText = ''; remoteInfo = undefined; (el('repoPicker') as HTMLDetailsElement).open = false; render(); void loadRemoteInfo(); void showDiff().catch(e => notice(String(e), true)); };
-            menu.append(button);
-        }
-        if (!snapshot.repos.length) {
-            const create = document.createElement('button');
-            create.className = 'repo-option repo-create';
-            create.textContent = snapshot.config.root ? t('Создать репозиторий в этой папке') : t('Выбрать папку…');
-            create.onclick = () => { if (!snapshot?.config.root) {
-                (el('repoPicker') as HTMLDetailsElement).open = false;
-                el('root').click();
-                return;
-            } (el('repoPicker') as HTMLDetailsElement).open = false; void action(async () => { snapshot = await call<Snapshot>('init_repository'); selected = snapshot.repos[0]?.id || ''; message.value = drafts.get(selected) || ''; selection = { file: '', staged: false }; diffText = ''; notice(t('Git-репозиторий создан')); }); };
-            menu.append(create);
-        }
-    }
+    historyView.sync(repo?.id || '', repo?.branch || '');
+    el('activeRepoName').textContent = repo?.name || t('Нет репозитория');
+    el('activeRepoName').title = repo?.name || '';
+    const branchChip = el('activeRepoBranch');
+    branchChip.hidden = !repo?.branch;
+    el('activeBranchName').textContent = repo?.branch || '';
+    branchChip.title = repo?.branch || '';
+    const navCount = el('navCount');
+    navCount.hidden = !repo?.files.length;
+    navCount.textContent = String(repo?.files.length ?? 0);
+    const fileCount = repo?.files.length ?? 0;
+    el('changesSummary').textContent = repo ? `${fileCount} · ${t('Файлы')}` : '';
+    const config = snapshot.config;
+    el('generationPreferences').textContent = [config.model, config.language, config.format].filter(Boolean).join(' · ');
+    renderRepositories(snapshot.repos, !!snapshot.config.root);
     el('rootPath').textContent = snapshot.config.root;
     el('rootPath').title = snapshot.config.root;
     el('branch').textContent = repo ? t(`${repo.upstream || t('Upstream не настроен')}  ·  ↓ ${repo.incoming}  ↑ ${repo.outgoing}`) : '';
     el('branch').title = t('Сравнение с локальным состоянием upstream. Автоматический fetch не выполняется.');
     renderRemote();
     const prepared = repo?.files.filter(f => !f.conflict && ![' ', '?'].includes(f.index)).length || 0;
+    el('generationScope').textContent = t(prepared ? 'Генерация по подготовленным изменениям' : 'Генерация по всем изменениям при пустом staging');
     el('commitHint').textContent = prepared ? t(`В коммит ${repo?.name}: ${prepared} файл(ов)`) : repo?.files.length ? t('Без staging в Commit войдут все Changes') : t('Нет изменений для коммита');
     const list = el('files');
     const scroll = list.scrollTop;
+    const focusedGroup = list.contains(document.activeElement)
+        ? (document.activeElement as HTMLElement).dataset.fileGroup : undefined;
+    const stageAll = el('stageAll');
+    const stageAllFocused = document.activeElement === stageAll;
+    document.querySelector('.files-toolbar')!.append(stageAll);
     list.replaceChildren();
     if (repo?.error)
         notice(repo.error, true);
-    const groups = [[t('Конфликты'), (f: Repo['files'][number]) => f.conflict, false], ['Staged Changes', (f: Repo['files'][number]) => !f.conflict && ![' ', '?'].includes(f.index), true], ['Changes', (f: Repo['files'][number]) => !f.conflict && (f.index === '?' || ![' ', '?'].includes(f.worktree)), false]] as const;
-    for (const [title, match, staged] of groups) {
+    const groups = [
+        ['conflicts', t('Конфликты'), (file: Repo['files'][number]) => file.conflict, false],
+        ['staged', 'Staged Changes', (file: Repo['files'][number]) => !file.conflict && ![' ', '?'].includes(file.index), true],
+        ['changes', 'Changes', (file: Repo['files'][number]) => !file.conflict && (file.index === '?' || ![' ', '?'].includes(file.worktree)), false],
+    ] as const;
+    const repoId = selected;
+    const collapsed = collapsedGroups.get(repoId) || new Set<string>();
+    for (const [group, title, match, staged] of groups) {
         const files = repo?.files.filter(match) || [];
-        if (!files.length)
-            continue;
+        if (!files.length) continue;
         const heading = document.createElement('h4');
-        heading.textContent = `${title} · ${files.length}`;
-        heading.title = staged ? t('Эти изменения войдут в следующий коммит') : title === t('Конфликты') ? t('Сначала разрешите конфликты в редакторе') : t('Эти изменения пока не войдут в коммит');
-        if (staged)
-            heading.append(iconButton(icons.minus, 'Unstage All Changes', () => void action(async () => { await call('unstage', { repo: selected }); selection.staged = false; notice(t('Все файлы возвращены в Changes')); })));
-        list.append(heading);
+        const body = document.createElement('div');
+        body.id = `file-group-${group}`;
+        body.hidden = collapsed.has(group);
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'file-group-toggle';
+        toggle.dataset.fileGroup = group;
+        toggle.setAttribute('aria-controls', body.id);
+        toggle.setAttribute('aria-expanded', String(!body.hidden));
+        toggle.title = staged ? t('Эти изменения войдут в следующий коммит') : group === 'conflicts' ? t('Сначала разрешите конфликты в редакторе') : t('Эти изменения пока не войдут в коммит');
+        toggle.innerHTML = icons.disclosure;
+        const label = document.createElement('span');
+        label.textContent = title;
+        const total = document.createElement('span');
+        total.className = 'file-group-count';
+        total.textContent = `· ${files.length}`;
+        toggle.append(label, total);
+        toggle.onclick = () => {
+            body.hidden = !body.hidden;
+            if (body.hidden) collapsed.add(group);
+            else collapsed.delete(group);
+            collapsedGroups.set(repoId, collapsed);
+            toggle.setAttribute('aria-expanded', String(!body.hidden));
+        };
+        heading.append(toggle);
+        if (staged) {
+            const unstageAll = iconButton(icons.minus, t('Убрать все из staging'), () => void action(async () => {
+                await call('unstage', { repo: selected });
+                selection.staged = false;
+                notice(t('Все файлы возвращены в Changes'));
+            }));
+            unstageAll.classList.add('file-group-action');
+            heading.append(unstageAll);
+        } else if (group === 'changes') {
+            heading.append(stageAll);
+        }
+        list.append(heading, body);
         for (const file of files) {
             const row = document.createElement('div');
             row.className = 'file' + (selection.file === file.path && selection.staged === staged ? ' active' : '');
-            const name = document.createElement('button');
+            const select = document.createElement('button');
+            select.type = 'button';
+            select.className = 'file-select';
+            select.setAttribute('aria-pressed', String(row.classList.contains('active')));
+            const name = document.createElement('span');
             name.className = 'name';
-            name.title = t(`Показать diff: ${file.path}`);
+            select.title = t(`Показать diff: ${file.path}`);
             const basename = document.createElement('span');
             basename.textContent = file.path.split('/').pop() || file.path;
             const folder = document.createElement('small');
             folder.textContent = file.path.includes('/') ? file.path.slice(0, file.path.lastIndexOf('/')) : file.index === '?' ? t('Новый файл') : '';
             name.append(basename, folder);
-            name.onclick = () => { selection = { file: file.path, staged }; diffText = ''; render(); void showDiff().catch(e => notice(String(e), true)); };
+            const status = document.createElement('span');
+            const code = file.conflict ? '!' : staged ? file.index : file.worktree;
+            status.className = 'file-status';
+            status.dataset.status = code;
+            status.textContent = code.trim() || 'M';
+            status.setAttribute('aria-hidden', 'true');
+            select.onclick = () => openFileDiff(file.path, staged);
             const stats = staged ? file.stagedStats : file.unstagedStats;
             const count = document.createElement('span');
             count.className = 'file-stats';
@@ -230,24 +446,12 @@ function render() {
                     selection.staged = !staged;
             }));
             change.disabled = busy || file.conflict;
-            const open = iconButton(icons.open, staged ? 'Open Staged Changes' : 'Open File', () => {
-                if (staged) {
-                    selection = { file: file.path, staged: true };
-                    diffText = '';
-                    render();
-                    void showDiff().catch(e => notice(String(e), true));
-                }
-                else
-                    void call<{
-                        path: string;
-                    }>('file-path', { repo: selected, file: file.path }).then(data => { if (!extensions.files)
-                        throw new Error(t('Открытие файлов недоступно в этом режиме Codex')); return extensions.files.open(data.path); }).catch(e => notice(String(e), true));
-            });
-            row.append(name, count, open);
+            select.append(status, name, count);
+            row.append(select);
             if (!staged)
-                row.append(iconButton(icons.discard, 'Discard Changes', () => { discardFile = file.path; el('discardFile').textContent = file.path; el<HTMLDialogElement>('discardDialog').showModal(); }));
+                row.append(iconButton(icons.discard, 'Discard Changes', () => { discardFile = file.path; el('discardFile').textContent = file.path; el('discardContext').textContent = [repo?.name, repo?.branch].filter(Boolean).join(' · '); el<HTMLDialogElement>('discardDialog').showModal(); }));
             row.append(change);
-            list.append(row);
+            body.append(row);
         }
     }
     if (!repo?.files.length) {
@@ -257,36 +461,74 @@ function render() {
         list.append(empty);
     }
     list.scrollTop = scroll;
+    if (focusedGroup) list.querySelector<HTMLButtonElement>(`[data-file-group="${focusedGroup}"]`)?.focus({ preventScroll: true });
+    const stageAllLabel = t('Подготовить все');
+    stageAll.title = stageAllLabel;
+    stageAll.setAttribute('aria-label', stageAllLabel);
     controls();
+    if (stageAllFocused) stageAll.focus({ preventScroll: true });
 }
 async function showDiff() {
     const repo = selected, file = selection.file, staged = selection.staged, full = fullFile;
-    if (!file || !current()?.files.some(f => f.path === file)) {
+    const entry = current()?.files.find(item => item.path === file);
+    const context = el('diffContext');
+    el('openSelectedFile').hidden = !entry || entry.worktree === 'D' || (entry.index === 'D' && entry.worktree === ' ');
+    if (!file || !entry) {
+        changesSplit.classList.remove('show-file-diff');
+        context.hidden = true;
         el('diff').replaceChildren();
         el('diffRuler').replaceChildren();
         el('filename').textContent = t('Выберите файл');
         return;
     }
+    el('filename').textContent = file + ' · ' + t(staged ? 'Подготовлено к коммиту' : 'Изменения в файле');
+    el('filename').title = file;
     const data = await call<{
         diff: string;
     }>('diff', { repo, file, staged, full });
     if (full !== fullFile || repo !== selected || file !== selection.file || staged !== selection.staged)
         return;
-    if (data.diff === diffText)
+    context.hidden = false;
+    context.textContent = t(staged ? 'Индекс относительно последнего коммита' : 'Рабочая копия относительно индекса');
+    if (data.diff && data.diff === diffText)
         return;
     diffText = data.diff;
     const view = el('diff'), scroll = view.scrollTop, left = view.scrollLeft;
-    el('filename').textContent = t(`${file} · ${staged ? t('Подготовлено к коммиту') : t('Изменения в файле')}`);
-    view.replaceChildren();
-    for (const line of (data.diff || t('Нет текстовых изменений')).split('\n')) {
-        const span = document.createElement('span');
-        span.className = 'line ' + (line.startsWith('+') ? 'add' : line.startsWith('-') ? 'del' : line.startsWith('@@') ? 'hunk' : '');
-        span.textContent = line || ' ';
-        view.append(span);
-    }
+    renderDiff(view, data.diff, entry.index === '?');
     view.scrollTop = scroll;
     view.scrollLeft = left;
     updateRuler();
+}
+function renderDiff(view: HTMLElement, diff: string, untracked = false) {
+    view.replaceChildren();
+    const rows = document.createDocumentFragment();
+    const lines = (diff || t('Нет текстовых изменений')).split('\n');
+    if (lines.length > 1 && lines[lines.length - 1] === '') lines.pop();
+    let oldLine = 0, newLine = 1, insideHunk = untracked && diff.startsWith('+');
+    for (const line of lines) {
+        const row = document.createElement('span');
+        row.className = 'line';
+        const hunk = /^@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/.exec(line);
+        if (hunk) {
+            oldLine = Number(hunk[1]);
+            newLine = Number(hunk[2]);
+            insideHunk = true;
+            row.classList.add('hunk');
+        } else if (insideHunk && /^[ +\-]/.test(line)) {
+            const marker = line[0];
+            if (marker !== '+') row.dataset.old = String(oldLine++);
+            if (marker !== '-') row.dataset.new = String(newLine++);
+            if (marker === '+') row.classList.add('add');
+            if (marker === '-') row.classList.add('del');
+            row.classList.add('diff-source');
+        } else {
+            if (line.startsWith('diff --git ') || line.startsWith('@@')) insideHunk = false;
+            row.classList.add('diff-meta');
+        }
+        row.textContent = line || ' ';
+        rows.append(row);
+    }
+    view.append(rows);
 }
 async function refresh() { if (refreshing)
     return; refreshing = true; try {
@@ -315,19 +557,23 @@ async function saveDraft(repo = selected, text = message.value) { if (repo) {
     drafts.set(repo, text);
     await call('draft', { repo, message: text, hash: generated.get(repo) });
 } }
-message.oninput = () => { controls(); drafts.set(selected, message.value); clearTimeout(draftTimer); const repo = selected, text = message.value; draftTimer = setTimeout(() => { void saveDraft(repo, text).catch(e => notice(String(e), true)); }, 300); };
+message.oninput = () => {
+    const repo = selected, text = message.value;
+    if (!repo) return;
+    controls();
+    drafts.set(repo, text);
+    clearTimeout(draftTimers.get(repo));
+    draftTimers.set(repo, setTimeout(() => {
+        draftTimers.delete(repo);
+        void saveDraft(repo, text).catch(error => {
+            if (selected === repo) notice(String(error), true);
+        });
+    }, 300));
+};
 for (const [id, full] of [['changesOnly', false], ['fullFile', true]] as const)
     el(id).onclick = () => { fullFile = full; diffText = ''; el('changesOnly').setAttribute('aria-pressed', String(!full)); el('fullFile').setAttribute('aria-pressed', String(full)); void showDiff().catch(e => notice(String(e), true)); };
-document.addEventListener('pointerdown', event => { for (const id of ['repoPicker', 'commitMenu']) {
-    const menu = el<HTMLDetailsElement>(id);
-    if (event.target instanceof Node && !menu.contains(event.target))
-        menu.open = false;
-} });
-document.addEventListener('keydown', event => { if (event.key === 'Escape')
-    for (const id of ['repoPicker', 'commitMenu'])
-        el<HTMLDetailsElement>(id).open = false; });
-el('refresh').onclick = () => void refresh();
-el('root').onclick = () => void action(async () => { snapshot = await call<Snapshot>('choose_root'); selected = ''; render(); message.value = drafts.get(selected) || ''; notice(t('Папка подключена')); });
+el('refresh').onclick = () => { void refresh(); historyView.reload(); };
+el('root').onclick = () => void action(async () => { snapshot = await call<Snapshot>('choose_root'); setActiveRepository(''); render(); message.value = drafts.get(selected) || ''; notice(t('Папка подключена')); });
 el('connectRemote').onclick = () => { el<HTMLInputElement>('remoteUrl').value = ''; el<HTMLDialogElement>('remoteDialog').showModal(); };
 el('remoteCancel').onclick = () => el<HTMLDialogElement>('remoteDialog').close();
 el('remoteConfirm').onclick = () => { const url = el<HTMLInputElement>('remoteUrl').value.trim(); if (!url) {
@@ -335,8 +581,6 @@ el('remoteConfirm').onclick = () => { const url = el<HTMLInputElement>('remoteUr
     return;
 } const id = selected; void action(async () => { await call('add_origin', { repo: id, url }); el<HTMLDialogElement>('remoteDialog').close(); remoteInfo = undefined; notice(t('GitHub remote origin подключён. Нажмите Push, чтобы отправить коммиты.')); }); };
 el('stageAll').innerHTML = icons.plus;
-el('stageAll').title = 'Stage All Changes';
-el('stageAll').setAttribute('aria-label', 'Stage All Changes');
 el('stageAll').onclick = () => void action(async () => { await call('stage', { repo: selected }); notice(t('Все изменения подготовлены')); });
 el('generate').onclick = () => void action(async () => {
     if (!current()?.files.length) {
@@ -370,9 +614,9 @@ async function pollJob() { if (!jobId)
         if (selected === generationRepo)
             message.value = job.message;
         await saveDraft(generationRepo, job.message);
-        notice(t('Сообщение готово. Проверьте его перед коммитом.'));
+        if (selected === generationRepo) notice(t('Сообщение готово. Проверьте его перед коммитом.'));
     }
-    else
+    else if (selected === generationRepo)
         notice(job.error || t('Генерация отменена'), job.state === 'error');
     controls();
 }
@@ -515,6 +759,10 @@ app.ontoolresult = result => { const data = result.structuredContent as Snapshot
     notice(t('Готово'));
     void loadRemoteInfo();
 } };
+el('changesIcon').innerHTML = icons.changes;
+el('historyIcon').innerHTML = icons.history;
+el('activeBranchIcon').innerHTML = icons.branch;
+el('codexTitleIcon').innerHTML = icons.sparkle;
 initI18n();
 setUiLanguage();
 await app.connect();
@@ -553,6 +801,7 @@ function updateRuler() {
             mark.onclick = () => { view.scrollTop = line.offsetTop - view.offsetTop; };
             ruler.append(mark);
         }
+    if (view.scrollHeight <= view.clientHeight) return;
     const viewport = document.createElement('span');
     viewport.className = 'ruler-viewport';
     viewport.style.top = `${view.scrollTop / Math.max(1, view.scrollHeight) * 100}%`;

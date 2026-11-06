@@ -1,6 +1,6 @@
 {
   "name": "git-workspace",
-  "version": "1.5.3",
+  "version": "1.7.11",
   "private": true,
   "type": "module",
   "scripts": {

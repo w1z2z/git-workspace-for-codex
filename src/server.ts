@@ -8,20 +8,26 @@ import { Workspace } from './git.js';
 const workspace = new Workspace(process.env.GIT_WORKSPACE_STATE_DIR);
 await workspace.init();
 const icons = [{ src: 'data:image/svg+xml;base64,' + (await readFile(new URL('../assets/icon.svg', import.meta.url))).toString('base64'), mimeType: 'image/svg+xml', sizes: ['64x64'] }];
-const server = new McpServer({ name: 'Git Workspace', version: '1.5.3', icons });
+const server = new McpServer({ name: 'Git Workspace', version: '1.7.11', icons });
 new OpenAIExtensions(server);
-const uri = 'ui://git-workspace/1.5.3/panel.html';
+const uri = 'ui://git-workspace/1.7.11/panel.html';
 const result = (value: Record<string, unknown>) => ({ content: [] as { type: 'text'; text: string }[], structuredContent: value });
 registerAppResource(server, 'Git Workspace', uri, {}, async () => ({ contents: [{ uri, mimeType: RESOURCE_MIME_TYPE, text: await readFile(new URL('./panel.html', import.meta.url), 'utf8'), _meta: { 'openai/ui': { preferredDisplayMode: 'fullscreen', availableDisplayModes: ['inline', 'fullscreen'] }, ui: { csp: { connectDomains: [], resourceDomains: [] } } } }] }));
 for (const [name, type] of [['git_workspace_open', 'global'], ['git_workspace_panel', 'thread']] as const) registerAppTool(server, name, { title: 'Git Workspace', description: 'Открыть Source Control для подключённых локальных репозиториев.', inputSchema: {}, annotations: { readOnlyHint: true, openWorldHint: false }, _meta: { ui: { resourceUri: uri }, 'openai/ui': { entrypoints: [{ type }] } } }, async () => result(await workspace.snapshot()));
 server.registerTool('git_workspace_action', {
   title: 'Git Workspace action', description: 'Действия панели Git Workspace. Изменяющие действия выполняются только по явному выбору пользователя.',
-  inputSchema: { action: z.enum(['refresh', 'diff', 'file', 'file-path', 'stage', 'unstage', 'discard', 'draft', 'settings', 'generate', 'job', 'cancel', 'commit', 'direction', 'push', 'init_repository', 'add_origin', 'choose_root']), repo: z.string().optional(), file: z.string().optional(), staged: z.boolean().optional(), full: z.boolean().optional(), message: z.string().optional(), hash: z.string().optional(), job: z.string().optional(), root: z.string().optional(), language: z.string().max(80).optional(), format: z.string().max(120).optional(), uiLanguage: z.enum(['en', 'ru']).optional(), model: z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$/).optional(), remote: z.string().optional(), branch: z.string().optional(), expectedBranch: z.string().optional(), url: z.string().max(2048).optional() },
+  inputSchema: { action: z.enum(['refresh', 'history', 'history-files', 'history-diff', 'diff', 'file', 'file-path', 'stage', 'unstage', 'discard', 'draft', 'settings', 'generate', 'job', 'cancel', 'commit', 'direction', 'push', 'init_repository', 'add_origin', 'choose_root']), repo: z.string().optional(), file: z.string().optional(), staged: z.boolean().optional(), full: z.boolean().optional(), message: z.string().optional(), hash: z.string().optional(), job: z.string().optional(), root: z.string().optional(), language: z.string().max(80).optional(), format: z.string().max(120).optional(), uiLanguage: z.enum(['en', 'ru']).optional(), model: z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$/).optional(), remote: z.string().optional(), branch: z.string().optional(), historyAll: z.boolean().optional(), historyLimit: z.number().int().min(1).max(2000).optional(), expectedBranch: z.string().optional(), url: z.string().max(2048).optional() },
   _meta: { ui: { visibility: ['app'] } }, annotations: { readOnlyHint: false, destructiveHint: true, openWorldHint: true },
 }, async args => {
   try {
     const id = args.repo || ''; let payload: object = {};
     switch (args.action) {
+      case 'history': payload = await workspace.history(id, args.branch, args.historyLimit ?? 100, args.historyAll); break;
+      case 'history-files': payload = await workspace.commitChanges(id, args.hash || ''); break;
+      case 'history-diff':
+        if (!args.file) throw new Error('Выберите файл');
+        payload = await workspace.commitChanges(id, args.hash || '', args.file);
+        break;
       case 'refresh': payload = await workspace.snapshot(); break;
       case 'file-path': payload = { path: await workspace.filePath(id, args.file || '') }; break;
       case 'file': payload = { diff: await workspace.file(id, args.file || '') }; break;
